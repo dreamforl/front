@@ -1,0 +1,24 @@
+@import "../../styles/variables.less";
+
+.themeToggle {
+  background: transparent;
+  border: none;
+  color: var(--neutral-600);
+  padding: var(--spacing-2);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: var(--primary-600);
+    background: var(--primary-50);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, User, Feather } from "lucide-react";
+import { Menu, X, Search, User, Feather, Moon } from "lucide-react";
 import useAppStore from "@/store";
 import { getCurrentUser } from "../../../../api";
 import styles from "./index.module.less";
 import useDictionaryStore from "@/store/dict";
+import ThemeToggle from "@/components/theme-toggle";
 import {
   HEADER_NAV,
   Header_nav,
@@ -76,6 +77,7 @@ const Header: React.FC = () => {
 
         {/* 移动端菜单按钮 */}
         <div className={styles.mobileActions}>
+          <ThemeToggle />
           <button className={styles.searchButton} aria-label="搜索">
             <Search size={20} />
           </button>
@@ -99,6 +101,7 @@ const Header: React.FC = () => {
 
         {/* 桌面端操作 */}
         <div className={styles.desktopActions}>
+          <ThemeToggle />
           <button className={styles.searchButton} aria-label="搜索">
             <Search size={20} />
             <span>搜索</span>
