@@ -1,14 +1,49 @@
 import React from 'react';
 import { Search } from 'lucide-react';
-import { useGsapFadeIn } from '@/hooks/use-gsap';
+import gsap from 'gsap';
+import { useEffect, useRef } from 'react';
 import styles from './index.module.less';
 
 const Banner: React.FC = () => {
-  const titleRef = useGsapFadeIn({
-    start: 'top center',
-    once: true
-  });
-  const searchRef = useGsapFadeIn({ delay: 0.3 });
+  const titleRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 标题动画
+      gsap.fromTo(
+        titleRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        }
+      );
+
+      // 搜索框动画
+      gsap.fromTo(
+        searchRef.current,
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 0.3,
+          ease: 'power2.out',
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div className={styles.banner}>
