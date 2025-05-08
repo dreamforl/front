@@ -1,14 +1,8 @@
-import type { BytemdPlugin } from "bytemd";
-import {
-  CatalogueItem,
-  CatalogueItemNode,
-  SetCatalogues,
-} from "@/types/article";
-const catalogueTagList = ["h1", "h2", "h3", "h4", "h5", "h6"];
+import type { BytemdPlugin } from 'bytemd';
+import { CatalogueItem, SetCatalogues } from '@/types/article';
+const catalogueTagList = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
-export default function cataloguePlugin(
-  setCatalogues: SetCatalogues
-): BytemdPlugin {
+export default function cataloguePlugin(setCatalogues: SetCatalogues): BytemdPlugin {
   return {
     viewerEffect({ markdownBody }) {
       const nodeList = markdownBody.children;
@@ -20,10 +14,9 @@ export default function cataloguePlugin(
           const id = `catalogue-${i}`;
           node.id = id;
           list.push({
-            // type: nodeName as CatalogueItemNode,
-            title: node.textContent || "",
+            title: node.textContent || '',
             id,
-            level: Number(nodeName.replace("h", "")),
+            level: Number(nodeName.replace('h', '')),
           });
         }
       }

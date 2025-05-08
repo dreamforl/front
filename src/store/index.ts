@@ -1,7 +1,6 @@
-import { create } from "zustand";
-import { Article, Tag, User } from "@/types";
-import { Categorie } from "@/api/categorie";
-import { Dict } from "@/api/dict";
+import { create } from 'zustand';
+import { Article, Tag, User } from '@/types';
+import { Categorie } from '@/api/categorie';
 
 interface AppState {
   currentUser: User | null;
@@ -18,19 +17,19 @@ interface AppState {
   setCategories: (categories: Categorie[]) => void;
 }
 
-const useAppStore = create<AppState>((set) => ({
+const useAppStore = create<AppState>(set => ({
   currentUser: null,
   isLoggedIn: false,
-  setCurrentUser: (user) => set({ currentUser: user }),
-  setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
+  setCurrentUser: user => set({ currentUser: user }),
+  setIsLoggedIn: isLoggedIn => set({ isLoggedIn }),
 
   recentArticles: [],
-  setRecentArticles: (articles) => set({ recentArticles: articles }),
+  setRecentArticles: articles => set({ recentArticles: articles }),
 
   tags: [],
-  setTags: (tags) => set({ tags }),
+  setTags: tags => set({ tags }),
   categories: [],
-  setCategories: (categories) => set({ categories }),
+  setCategories: categories => set({ categories }),
 }));
 
 export default useAppStore;

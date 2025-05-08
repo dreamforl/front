@@ -3,25 +3,25 @@
 .footer {
   background-color: var(--neutral-800);
   color: var(--neutral-200);
-  
-  [data-theme="dark"] & {
+
+  [data-theme='dark'] & {
     background-color: var(--neutral-900);
     border-top: 1px solid var(--neutral-800);
-    
+
     .description {
       color: var(--neutral-400);
     }
-    
+
     .copyright {
       color: var(--neutral-500);
     }
   }
   padding: var(--spacing-7) 0 var(--spacing-5);
-  
+
   a {
     color: var(--neutral-300);
     transition: color var(--transition-fast) ease;
-    
+
     &:hover {
       color: var(--primary-300);
       text-decoration: none;
@@ -33,7 +33,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-5);
-  
+
   @media @mobile {
     padding: 0 var(--spacing-4);
   }
@@ -43,7 +43,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: var(--spacing-7);
-  
+
   @media @mobile {
     flex-direction: column;
   }
@@ -52,12 +52,12 @@
 .brand {
   flex: 1;
   margin-right: var(--spacing-6);
-  
+
   @media @mobile {
     margin-right: 0;
     margin-bottom: var(--spacing-6);
   }
-  
+
   .logo {
     display: flex;
     align-items: center;
@@ -65,13 +65,13 @@
     font-weight: 700;
     color: var(--primary-300);
     margin-bottom: var(--spacing-3);
-    
+
     svg {
       font-size: 1.5em;
       margin-right: var(--spacing-2);
     }
   }
-  
+
   .description {
     color: var(--neutral-400);
     margin-bottom: var(--spacing-5);
@@ -82,7 +82,7 @@
 .socialLinks {
   display: flex;
   gap: var(--spacing-3);
-  
+
   a {
     display: flex;
     align-items: center;
@@ -94,7 +94,7 @@
     color: var(--neutral-200);
     font-size: var(--font-size-lg);
     transition: all var(--transition-fast) ease;
-    
+
     &:hover {
       background: var(--primary-600);
       color: white;
@@ -106,7 +106,7 @@
 .links {
   display: flex;
   flex-wrap: wrap;
-  
+
   @media @mobile {
     margin-top: var(--spacing-5);
   }
@@ -114,13 +114,13 @@
 
 .linkGroup {
   margin-right: var(--spacing-8);
-  
+
   @media @mobile {
     margin-right: 0;
     margin-bottom: var(--spacing-5);
     width: 50%;
   }
-  
+
   h3 {
     color: var(--neutral-100);
     font-size: var(--font-size-base);
@@ -128,15 +128,15 @@
     padding-bottom: var(--spacing-2);
     border-bottom: 1px solid var(--neutral-700);
   }
-  
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    
+
     li {
       margin-bottom: var(--spacing-3);
-      
+
       a {
         font-size: var(--font-size-sm);
       }

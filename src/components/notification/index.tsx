@@ -11,6 +11,13 @@ const NotificationItem: React.FC<{
 }> = ({ notification, onRemove }) => {
   const [isExiting, setIsExiting] = useState(false);
 
+  const handleRemove = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      onRemove(notification.id);
+    }, 300);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       handleRemove();
@@ -18,13 +25,6 @@ const NotificationItem: React.FC<{
 
     return () => clearTimeout(timer);
   }, []);
-
-  const handleRemove = () => {
-    setIsExiting(true);
-    setTimeout(() => {
-      onRemove(notification.id);
-    }, 300);
-  };
 
   const getIcon = () => {
     switch (notification.type) {
@@ -38,16 +38,16 @@ const NotificationItem: React.FC<{
   };
 
   return (
-    <div className={`${styles.notification} ${styles[notification.type]} ${isExiting ? styles.exiting : ''}`}>
-      <div className={`${styles.icon} ${styles[notification.type]}`}>
-        {getIcon()}
-      </div>
+    <div
+      className={`${styles.notification} ${styles[notification.type]} ${
+        isExiting ? styles.exiting : ''
+      }`}
+    >
+      <div className={`${styles.icon} ${styles[notification.type]}`}>{getIcon()}</div>
       <div className={styles.content}>
         <h4 className={styles.title}>{notification.title}</h4>
         <p className={styles.message}>{notification.message}</p>
-        <div className={styles.time}>
-          {formatDate(new Date(notification.timestamp))}
-        </div>
+        <div className={styles.time}>{formatDate(new Date(notification.timestamp))}</div>
       </div>
       <button className={styles.closeButton} onClick={() => handleRemove()}>
         <X size={16} />

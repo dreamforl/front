@@ -28,7 +28,7 @@ export const useGsapFadeIn = (options = {}) => {
           once: true,
           ...options,
         },
-      }
+      },
     );
   }, [options]);
 
@@ -64,7 +64,7 @@ export const useGsapStagger = (selector: string, options = {}) => {
           once: true,
           ...options,
         },
-      }
+      },
     );
   }, [selector, options]);
 

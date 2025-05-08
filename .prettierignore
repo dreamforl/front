@@ -1,0 +1,4 @@
+/node_modules
+/build
+/zwapp
+vite.config.ts

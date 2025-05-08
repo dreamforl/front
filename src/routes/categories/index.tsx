@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import styles from "./index.module.less";
-import SafeSvgRenderer from "@/lib/xss";
-import useAppStore from "@/store";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './index.module.less';
+import SafeSvgRenderer from '@/lib/xss';
+import useAppStore from '@/store';
 
 const CategoriesPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
@@ -18,18 +18,15 @@ const CategoriesPage: React.FC = () => {
 
       <div className={styles.container}>
         <div className={styles.categories}>
-          {categories.map((category) => (
+          {categories.map(category => (
             <div
               key={category.id}
               className={`${styles.categoryCard} ${
-                selectedCategory === category.id ? styles.selected : ""
+                selectedCategory === category.id ? styles.selected : ''
               }`}
               onClick={() => setSelectedCategory(category.id)}
             >
-              <div
-                className={styles.icon}
-                style={{ backgroundColor: category.color }}
-              >
+              <div className={styles.icon} style={{ backgroundColor: category.color }}>
                 <SafeSvgRenderer svg={category.icon}></SafeSvgRenderer>
               </div>
               <div className={styles.content}>
@@ -37,10 +34,7 @@ const CategoriesPage: React.FC = () => {
                 <p>{category.desc}</p>
                 <div className={styles.meta}>
                   <span>{category.count} 篇文章</span>
-                  <Link
-                    to={`/categories/${category.id}`}
-                    className={styles.viewMore}
-                  >
+                  <Link to={`/categories/${category.id}`} className={styles.viewMore}>
                     查看更多
                   </Link>
                 </div>

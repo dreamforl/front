@@ -8,14 +8,14 @@
   height: 100%;
   z-index: var(--z-index-modal);
   visibility: hidden;
-  
+
   &.open {
     visibility: visible;
-    
+
     .overlay {
       opacity: 1;
     }
-    
+
     .content {
       transform: translateY(0);
     }
@@ -42,7 +42,7 @@
   padding: var(--spacing-6);
   transform: translateY(-100%);
   transition: transform var(--transition-normal) ease;
-  
+
   @media @mobile {
     padding: var(--spacing-4);
   }
@@ -57,7 +57,7 @@
   color: var(--neutral-500);
   cursor: pointer;
   padding: var(--spacing-2);
-  
+
   &:hover {
     color: var(--neutral-800);
   }
@@ -75,11 +75,11 @@
   background: var(--neutral-100);
   padding: var(--spacing-3) var(--spacing-4);
   border-radius: var(--radius-lg);
-  
+
   svg {
     color: var(--neutral-500);
   }
-  
+
   input {
     flex: 1;
     border: none;
@@ -87,7 +87,7 @@
     font-size: var(--font-size-lg);
     color: var(--neutral-900);
     outline: none;
-    
+
     &::placeholder {
       color: var(--neutral-400);
     }
@@ -97,7 +97,7 @@
 .suggestions {
   max-width: 600px;
   margin: var(--spacing-6) auto 0;
-  
+
   h3 {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-4);
@@ -109,7 +109,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-2);
-  
+
   button {
     background: var(--neutral-100);
     border: none;
@@ -119,7 +119,7 @@
     font-size: var(--font-size-sm);
     cursor: pointer;
     transition: all var(--transition-fast) ease;
-    
+
     &:hover {
       background: var(--primary-100);
       color: var(--primary-700);

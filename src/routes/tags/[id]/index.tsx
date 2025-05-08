@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Article, Tag } from "../../../types";
-import { getArticles } from "../../../api";
-import ArticleList from "../../home/modules/article-list";
-import Sidebar from "../../home/modules/sidebar";
-import styles from "./index.module.less";
-import { getTags } from "@/api/tag";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Article, Tag } from '../../../types';
+import { getArticles } from '../../../api';
+import ArticleList from '../../home/modules/article-list';
+import Sidebar from '../../home/modules/sidebar';
+import styles from './index.module.less';
+import { getTags } from '@/api/tag';
 
 const TagDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,22 +17,17 @@ const TagDetailPage: React.FC = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const [articlesResponse, tagsResponse] = await Promise.all([
-          getArticles(),
-          getTags(),
-        ]);
+        const [articlesResponse, tagsResponse] = await Promise.all([getArticles(), getTags()]);
 
         // 获取当前标签信息
-        const currentTag = tagsResponse.find((t) => t.id === Number(id));
+        const currentTag = tagsResponse.find(t => t.id === Number(id));
         setTag(currentTag || null);
 
         // 根据标签过滤文章
-        const filteredArticles = articlesResponse.list.filter((article) =>
-          article.tags.some((t) => t.id === Number(id))
+        const filteredArticles = articlesResponse.list.filter(article =>
+          article.tags.some(t => t.id === Number(id)),
         );
         setArticles(filteredArticles);
-      } catch (error) {
-        console.error("获取数据失败:", error);
       } finally {
         setLoading(false);
       }
@@ -67,7 +62,7 @@ const TagDetailPage: React.FC = () => {
             />
           </div>
           <aside className={styles.sidebar}>
-            <Sidebar hotTags={[]} />
+            <Sidebar />
           </aside>
         </div>
       </div>

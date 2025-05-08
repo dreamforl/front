@@ -13,7 +13,7 @@
   justify-content: center;
   text-align: center;
   margin-top: -20px;
-  
+
   @media @mobile {
     height: 200px;
   }
@@ -23,17 +23,17 @@
   h1 {
     font-size: var(--font-size-4xl);
     margin-bottom: var(--spacing-3);
-    
+
     @media @mobile {
       font-size: var(--font-size-2xl);
     }
   }
-  
+
   p {
     font-size: var(--font-size-lg);
     opacity: 0.9;
     margin: 0;
-    
+
     @media @mobile {
       font-size: var(--font-size-base);
     }
@@ -44,7 +44,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--spacing-8) var(--spacing-5);
-  
+
   @media @mobile {
     padding: var(--spacing-6) var(--spacing-4);
   }
@@ -54,21 +54,22 @@
   background: white;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  
-  [data-theme="dark"] & {
+
+  [data-theme='dark'] & {
     background: var(--neutral-800);
     border: 1px solid var(--neutral-700);
-    
-    h2, h3 {
+
+    h2,
+    h3 {
       color: var(--neutral-100);
     }
-    
+
     p {
       color: var(--neutral-300);
     }
   }
   padding: var(--spacing-8);
-  
+
   @media @mobile {
     padding: var(--spacing-5);
   }
@@ -77,13 +78,13 @@
 .intro {
   text-align: center;
   margin-bottom: var(--spacing-8);
-  
+
   h2 {
     font-size: var(--font-size-3xl);
     margin-bottom: var(--spacing-4);
     color: var(--primary-600);
   }
-  
+
   p {
     font-size: var(--font-size-lg);
     color: var(--neutral-700);
@@ -95,7 +96,7 @@
 
 .mission {
   margin-bottom: var(--spacing-8);
-  
+
   h2 {
     text-align: center;
     font-size: var(--font-size-3xl);
@@ -116,23 +117,23 @@
   background: var(--primary-50);
   border-radius: var(--radius-lg);
   transition: transform var(--transition-normal) ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
-  
+
   svg {
     font-size: 48px;
     color: var(--primary-500);
     margin-bottom: var(--spacing-4);
   }
-  
+
   h3 {
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-3);
     color: var(--primary-700);
   }
-  
+
   p {
     color: var(--neutral-600);
     line-height: var(--line-height-normal);
@@ -160,29 +161,29 @@
   background: var(--neutral-50);
   border-radius: var(--radius-lg);
   transition: all var(--transition-normal) ease;
-  
+
   &:hover {
     background: var(--primary-50);
     transform: translateY(-5px);
-    
+
     svg {
       color: var(--primary-500);
     }
   }
-  
+
   svg {
     font-size: 36px;
     color: var(--neutral-500);
     margin-bottom: var(--spacing-3);
     transition: color var(--transition-normal) ease;
   }
-  
+
   h3 {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-2);
     color: var(--neutral-800);
   }
-  
+
   p {
     color: var(--neutral-600);
   }

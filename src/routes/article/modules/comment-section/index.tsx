@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { MessageSquare, Reply, ChevronDown, ThumbsUp } from "lucide-react";
-import { Article, Comment } from "../../../../types";
-import { formatDate } from "@/utils/date";
-import styles from "./index.module.less";
-import useBaseState from "./hooks";
-import { useNotificationStore } from "@/store/notification";
-import CommentForm from "../comment-form";
+import React, { useState } from 'react';
+import { MessageSquare, Reply, ChevronDown, ThumbsUp } from 'lucide-react';
+import { Article, Comment } from '../../../../types';
+import { formatDate } from '@/utils/date';
+import styles from './index.module.less';
+import useBaseState from './hooks';
+import { useNotificationStore } from '@/store/notification';
+import CommentForm from '../comment-form';
 
 interface CommentSectionProps {
   article: Article;
 }
 
-const CommentSection: React.FC<CommentSectionProps> = (props) => {
+const CommentSection: React.FC<CommentSectionProps> = props => {
   const baseState = useBaseState();
   const { article } = props;
   const { addNotification } = useNotificationStore();
   const { commentCount } = article;
-  const { 
-    list, 
-    total, 
-    commentMap, 
-    updateComments, 
+  const {
+    list,
+    total,
+    commentMap,
+    updateComments,
     loading,
     childLoading,
     loadMoreMainComments,
     loadMoreChildComments,
     hasMoreMainComments,
     getChildCommentsCount,
-    getLoadedChildCommentsCount
+    getLoadedChildCommentsCount,
   } = baseState;
-  
+
   const [replyTo, setReplyTo] = useState<{ id: number; name: string } | null>(null);
   const [replyingToParentId, setReplyingToParentId] = useState<number | undefined>(undefined);
 
@@ -37,7 +37,7 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
   const handleReply = (comment: Comment, parentId?: number) => {
     setReplyTo({
       id: comment.id,
-      name: comment.author.name
+      name: comment.author.name,
     });
     setReplyingToParentId(parentId);
   };
@@ -65,9 +65,7 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
         <span>评论 ({commentCount})</span>
       </h3>
 
-      <CommentForm 
-        onCommentAdded={handleCommentAdded}
-      />
+      <CommentForm onCommentAdded={handleCommentAdded} />
 
       <div className={styles.commentList}>
         {total === 0 ? (
@@ -76,47 +74,36 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
           </div>
         ) : (
           <>
-            {list.map((comment) => {
+            {list.map(comment => {
               const childList = commentMap.current.get(comment.id) || [];
               const childTotal = getChildCommentsCount(comment.id);
               const loadedChildCount = getLoadedChildCommentsCount(comment.id);
               const hasMoreChildComments = childTotal > loadedChildCount;
-              
+
               return (
                 <div key={comment.id} className={styles.commentThread}>
                   <div className={styles.commentItem}>
                     <div className={styles.commentAuthor}>
-                      <img
-                        src={comment.author.avatar}
-                        alt={comment.author.name}
-                      />
+                      <img src={comment.author.avatar} alt={comment.author.name} />
                       <div className={styles.authorInfo}>
-                        <span className={styles.authorName}>
-                          {comment.author.name}
-                        </span>
+                        <span className={styles.authorName}>{comment.author.name}</span>
                         <span className={styles.commentTime}>
                           {formatDate(comment.createdTime)}
                         </span>
                       </div>
                     </div>
 
-                    <div 
+                    <div
                       className={styles.commentContent}
                       dangerouslySetInnerHTML={{ __html: comment.content }}
                     />
 
                     <div className={styles.commentActions}>
-                      <button
-                        className={styles.replyButton}
-                        onClick={() => handleReply(comment)}
-                      >
+                      <button className={styles.replyButton} onClick={() => handleReply(comment)}>
                         <Reply size={14} />
                         回复
                       </button>
-                      <button
-                        className={styles.replyButton}
-                        title="点赞"
-                      >
+                      <button className={styles.replyButton} title="点赞">
                         <ThumbsUp size={14} />
                         {comment.likes || 0}
                       </button>
@@ -138,17 +125,12 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
                   {/* 渲染子评论 */}
                   {childList.length > 0 && (
                     <div className={styles.childComments}>
-                      {childList.map((childComment) => (
+                      {childList.map(childComment => (
                         <div key={childComment.id} className={styles.commentItem}>
                           <div className={styles.commentAuthor}>
-                            <img
-                              src={childComment.author.avatar}
-                              alt={childComment.author.name}
-                            />
+                            <img src={childComment.author.avatar} alt={childComment.author.name} />
                             <div className={styles.authorInfo}>
-                              <span className={styles.authorName}>
-                                {childComment.author.name}
-                              </span>
+                              <span className={styles.authorName}>{childComment.author.name}</span>
                               <span className={styles.commentTime}>
                                 {formatDate(childComment.createdTime)}
                               </span>
@@ -172,10 +154,7 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
                               <Reply size={14} />
                               回复
                             </button>
-                            <button
-                              className={styles.replyButton}
-                              title="点赞"
-                            >
+                            <button className={styles.replyButton} title="点赞">
                               <ThumbsUp size={14} />
                               {childComment.likes || 0}
                             </button>
@@ -185,8 +164,8 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
 
                       {/* 加载更多子评论按钮 */}
                       {hasMoreChildComments && (
-                        <button 
-                          className={styles.loadMoreButton} 
+                        <button
+                          className={styles.loadMoreButton}
                           onClick={() => loadMoreChildComments(comment.id)}
                           disabled={childLoading[comment.id]}
                         >
@@ -223,7 +202,7 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
 
             {/* 加载更多主评论按钮 */}
             {hasMoreMainComments && (
-              <button 
+              <button
                 className={styles.loadMoreButton}
                 onClick={loadMoreMainComments}
                 disabled={loading}

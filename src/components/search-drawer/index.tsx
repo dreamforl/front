@@ -47,7 +47,7 @@ const SearchDrawer: React.FC<SearchDrawerProps> = ({ isOpen, onClose }) => {
               type="text"
               placeholder="搜索文章、标签或作者..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={e => setSearchTerm(e.target.value)}
               autoFocus
             />
           </div>

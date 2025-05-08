@@ -1,12 +1,11 @@
-import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import Header from "./modules/header";
-import Footer from "./modules/footer";
-import styles from "./index.module.less";
-import NavigationProvider from "@/store/navigation-context";
-import { useNotificationStore } from "@/store/notification";
-import useAppStore from "@/store";
+import React, { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import Header from './modules/header';
+import Footer from './modules/footer';
+import styles from './index.module.less';
+import NavigationProvider from '@/store/navigation-context';
+import { useNotificationStore } from '@/store/notification';
+import useAppStore from '@/store';
 
 const MainLayout: React.FC = () => {
   const navigate = useNavigate();

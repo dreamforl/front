@@ -23,11 +23,7 @@ const MobileToc: React.FC<MobileTocProps> = ({ items }) => {
 
   return (
     <>
-      <button
-        className={styles.tocButton}
-        onClick={() => setIsOpen(true)}
-        aria-label="查看目录"
-      >
+      <button className={styles.tocButton} onClick={() => setIsOpen(true)} aria-label="查看目录">
         <List size={24} />
       </button>
 
@@ -40,20 +36,15 @@ const MobileToc: React.FC<MobileTocProps> = ({ items }) => {
               <X size={24} />
             </button>
           </div>
-          
+
           <nav className={styles.tocList}>
             {items.length === 0 ? (
               <p className={styles.empty}>此文章没有目录</p>
             ) : (
               <ul>
-                {items.map((item) => (
-                  <li
-                    key={item.id}
-                    className={`${styles.tocItem} ${styles[`level${item.level}`]}`}
-                  >
-                    <button onClick={() => handleClick(item.id)}>
-                      {item.text}
-                    </button>
+                {items.map(item => (
+                  <li key={item.id} className={`${styles.tocItem} ${styles[`level${item.level}`]}`}>
+                    <button onClick={() => handleClick(item.id)}>{item.text}</button>
                   </li>
                 ))}
               </ul>

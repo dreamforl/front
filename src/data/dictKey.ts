@@ -2,7 +2,7 @@
  * 头部的导航
  *
  */
-export const HEADER_NAV = "header_nav";
+export const HEADER_NAV = 'header_nav';
 export type Header_nav = {
   label: string;
   path: string;
@@ -11,7 +11,7 @@ export type Header_nav = {
  * 网站信息
  *
  */
-export const WEBSIT_INFO = "websit";
+export const WEBSIT_INFO = 'websit';
 export type WebSitInfo = {
   name: string;
 };

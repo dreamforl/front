@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Clock, Eye, Heart, MessageSquare } from "lucide-react";
-import { Article, listRes } from "../../../../types";
-import { formatDate } from "../../../../utils/date";
-import { useGsapStagger } from "@/hooks/use-gsap";
-import styles from "./index.module.less";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Clock, Eye, Heart, MessageSquare } from 'lucide-react';
+import { Article, listRes } from '../../../../types';
+import { formatDate } from '../../../../utils/date';
+import { useGsapStagger } from '@/hooks/use-gsap';
+import styles from './index.module.less';
 
 interface ArticleListProps {
   articlesData: listRes<Article>;
@@ -13,11 +13,10 @@ interface ArticleListProps {
 
 const ArticleList: React.FC<ArticleListProps> = ({ articlesData, loading }) => {
   const { list, total } = articlesData;
-  console.log('list:', list)
   const articlesRef = useGsapStagger('.article-card', {
     start: 'top bottom-=100',
     once: true,
-    markers: false
+    markers: false,
   });
 
   if (loading) {
@@ -42,7 +41,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articlesData, loading }) => {
       <h2 className={styles.sectionTitle}>最新文章</h2>
 
       <div className={styles.articles} ref={articlesRef}>
-        {list.map((article) => (
+        {list.map(article => (
           <article key={article.id} className={`${styles.articleCard} article-card`}>
             <Link to={`/article/${article.id}`} className={styles.coverLink}>
               <div className={styles.cover}>
@@ -52,7 +51,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articlesData, loading }) => {
 
             <div className={styles.content}>
               <div className={styles.tags}>
-                {article.tags.map((tag) => (
+                {article.tags.map(tag => (
                   <Link
                     key={tag.id}
                     to={`/tags/${tag.id}`}
@@ -86,10 +85,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articlesData, loading }) => {
                     <span>{article.views}</span>
                   </span>
                   <span className={styles.statItem}>
-                    <Heart
-                      size={16}
-                      fill={article.isLiked ? "var(--primary-500)" : "none"}
-                    />
+                    <Heart size={16} fill={article.isLiked ? 'var(--primary-500)' : 'none'} />
                     <span>{article.likes}</span>
                   </span>
                   <span className={styles.statItem}>

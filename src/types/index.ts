@@ -10,7 +10,7 @@ export interface User {
   roles?: string[];
   permissions?: string[];
 }
-type Author = Pick<User, "id" | "name" | "tips" | "email" | "avatar">;
+type Author = Pick<User, 'id' | 'name' | 'tips' | 'email' | 'avatar'>;
 
 // 标签类型
 export interface Tag {
@@ -49,7 +49,6 @@ export interface Comment {
   childrenCount?: number; // 子评论总数
   likes?: number; // 点赞数
 }
-
 
 // 分页响应类型
 export interface listRes<T> {

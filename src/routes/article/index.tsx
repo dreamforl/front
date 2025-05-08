@@ -1,51 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getArticleById } from "../../api";
-import { Article } from "../../types";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getArticleById } from '../../api';
+import { Article } from '../../types';
 import { authorInfo } from '@/data/author';
-import CommentSection from "./modules/comment-section";
-import ArticleMeta from "./modules/article-meta";
-import Catalogues from "./modules/catalogues";
-import styles from "./index.module.less";
-import { Share2, Bookmark, ThumbsUp, UserPlus } from "lucide-react";
-import Preview from "@/components/md/preview";
-import { CatalogueItem } from "@/types/article";
+import CommentSection from './modules/comment-section';
+import ArticleMeta from './modules/article-meta';
+import Catalogues from './modules/catalogues';
+import styles from './index.module.less';
+import { Share2, Bookmark, ThumbsUp, UserPlus } from 'lucide-react';
+import Preview from '@/components/md/preview';
+import { CatalogueItem } from '@/types/article';
 
 // 根据背景色计算最合适的文本颜色（黑色或白色）
 const getBestTextColor = (bgColor: string) => {
   // 处理rgba的情况
-  if (bgColor.startsWith("rgba")) {
-    const values = bgColor.match(
-      /rgba\((\d+),\s*(\d+),\s*(\d+),\s*([0-9.]+)\)/
-    );
+  if (bgColor.startsWith('rgba')) {
+    const values = bgColor.match(/rgba\((\d+),\s*(\d+),\s*(\d+),\s*([0-9.]+)\)/);
     if (values) {
       const [_, r, g, b] = values.map(Number);
       // 计算亮度 - 使用相对亮度算法 (luminance)
       const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-      return luminance > 186 ? "#000000" : "#ffffff";
+      return luminance > 186 ? '#000000' : '#ffffff';
     }
   }
 
   // 处理rgb的情况
-  if (bgColor.startsWith("rgb")) {
+  if (bgColor.startsWith('rgb')) {
     const values = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
     if (values) {
       const [_, r, g, b] = values.map(Number);
       // 计算亮度
       const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-      return luminance > 186 ? "#000000" : "#ffffff";
+      return luminance > 186 ? '#000000' : '#ffffff';
     }
   }
 
   // 处理十六进制的情况
-  if (bgColor.startsWith("#")) {
+  if (bgColor.startsWith('#')) {
     let hex = bgColor.substring(1);
     // 处理简写形式 (#fff)
     if (hex.length === 3) {
       hex = hex
-        .split("")
-        .map((c) => c + c)
-        .join("");
+        .split('')
+        .map(c => c + c)
+        .join('');
     }
 
     const r = parseInt(hex.substring(0, 2), 16);
@@ -54,11 +52,11 @@ const getBestTextColor = (bgColor: string) => {
 
     // 计算亮度
     const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-    return luminance > 186 ? "#000000" : "#ffffff";
+    return luminance > 186 ? '#000000' : '#ffffff';
   }
 
   // 默认返回黑色
-  return "#000000";
+  return '#000000';
 };
 
 const ArticleDetailPage: React.FC = () => {
@@ -73,7 +71,6 @@ const ArticleDetailPage: React.FC = () => {
       setLoading(true);
       getArticleById(Number(id))
         .then(setArticle)
-        .catch((error) => console.error("获取文章数据失败:", error))
         .finally(() => {
           setLoading(false);
         });
@@ -102,10 +99,7 @@ const ArticleDetailPage: React.FC = () => {
 
   return (
     <div className={styles.articleDetail}>
-      <div
-        className={styles.banner}
-        style={{ backgroundImage: `url(${article.cover})` }}
-      >
+      <div className={styles.banner} style={{ backgroundImage: `url(${article.cover})` }}>
         <div className={styles.overlay}></div>
         <div className={styles.bannerContent}>
           <h1 className={styles.title}>{article.title}</h1>
@@ -117,40 +111,27 @@ const ArticleDetailPage: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <article className={styles.article}>
-            <Preview
-              value={article.content}
-              setCatalogues={setCatalogues}
-            ></Preview>
+            <Preview value={article.content} setCatalogues={setCatalogues}></Preview>
             <div className={styles.actions}>
               <div className={styles.tags}>
-                {article.tags.map((tag) => {
+                {article.tags.map(tag => {
                   // 为每个标签选择一个图标（示例）
                   let TagIcon;
                   switch (tag.name) {
-                    case "React":
-                      TagIcon = () => (
-                        <span className={styles.tagIcon}>⚛️</span>
-                      );
+                    case 'React':
+                      TagIcon = () => <span className={styles.tagIcon}>⚛️</span>;
                       break;
-                    case "JavaScript":
-                      TagIcon = () => (
-                        <span className={styles.tagIcon}>JS</span>
-                      );
+                    case 'JavaScript':
+                      TagIcon = () => <span className={styles.tagIcon}>JS</span>;
                       break;
-                    case "TypeScript":
-                      TagIcon = () => (
-                        <span className={styles.tagIcon}>TS</span>
-                      );
+                    case 'TypeScript':
+                      TagIcon = () => <span className={styles.tagIcon}>TS</span>;
                       break;
-                    case "前端":
-                      TagIcon = () => (
-                        <span className={styles.tagIcon}>🌐</span>
-                      );
+                    case '前端':
+                      TagIcon = () => <span className={styles.tagIcon}>🌐</span>;
                       break;
-                    case "后端":
-                      TagIcon = () => (
-                        <span className={styles.tagIcon}>🖥️</span>
-                      );
+                    case '后端':
+                      TagIcon = () => <span className={styles.tagIcon}>🖥️</span>;
                       break;
                     default:
                       TagIcon = () => <span className={styles.tagIcon}>#</span>;

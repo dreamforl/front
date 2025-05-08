@@ -1,17 +1,20 @@
-import js from "@eslint/js";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
-
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactPlugin from 'eslint-plugin-react';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+import prettier from 'eslint-plugin-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import tsParser from '@typescript-eslint/parser';
 export default tseslint.config(
-  { ignores: ["dist"] },
+  { ignores: ['dist', 'mock', 'config'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ["**/*.{ts,tsx}"],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, eslintConfigPrettier],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       parser: tsParser,
       parserOptions: {
         ecmaFeatures: {
@@ -22,72 +25,72 @@ export default tseslint.config(
         ...globals.browser,
         ...globals.es2021,
         ...globals.node,
-        RequestInit: "readonly",
-        Response: "readonly",
-        Request: "readonly",
-        Headers: "readonly",
-        FormData: "readonly",
-        Blob: "readonly",
-        File: "readonly",
-        URLSearchParams: "readonly",
-        BodyInit: "readonly",
-        React: "readonly",
+        RequestInit: 'readonly',
+        Response: 'readonly',
+        Request: 'readonly',
+        Headers: 'readonly',
+        FormData: 'readonly',
+        Blob: 'readonly',
+        File: 'readonly',
+        URLSearchParams: 'readonly',
+        BodyInit: 'readonly',
+        React: 'readonly',
       },
     },
     plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+      prettier: prettier,
+      react: reactPlugin,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      // react-refresh/only-export-components  在修改组件代码后保持组件状态，无需完全刷新页面
+      // 如果文件中默认导出的是非组件（如工具函数、配置对象），Fast Refresh 可能会失效，甚至导致运行时错误。
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'prettier/prettier': 'error',
       // TypeScript 相关规则
-      "@typescript-eslint/explicit-function-return-type": 0,
-      "@typescript-eslint/no-explicit-any": 2,
-      "@typescript-eslint/no-unused-vars": [
+      '@typescript-eslint/explicit-function-return-type': 0,
+      '@typescript-eslint/no-explicit-any': 2,
+      '@typescript-eslint/no-unused-vars': [
         2,
         {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
         },
       ],
-      "@typescript-eslint/no-unused-expressions": [
+      '@typescript-eslint/no-unused-expressions': [
         2,
         {
           allowShortCircuit: true,
           allowTernary: true,
         },
       ],
-      "@typescript-eslint/no-use-before-define": 2,
-      "@typescript-eslint/no-non-null-assertion": 2,
-      "@typescript-eslint/no-shadow": 2,
+      '@typescript-eslint/no-use-before-define': 2,
+      '@typescript-eslint/no-non-null-assertion': 2,
+      '@typescript-eslint/no-shadow': 2,
 
       // React 相关规则
-      "react/react-in-jsx-scope": 0,
-      "react/prop-types": 0,
-      "react/display-name": 0,
-      "react-hooks/rules-of-hooks": 2,
-      "react-hooks/exhaustive-deps": 0,
-      "react/jsx-no-undef": 2,
-      "react/jsx-uses-vars": 2,
-      "react/no-array-index-key": 2,
+      'react/react-in-jsx-scope': 0,
+      'react/prop-types': 0,
+      'react/display-name': 0,
+      'react-hooks/rules-of-hooks': 2,
+      'react-hooks/exhaustive-deps': 0,
+      'react/jsx-no-undef': 2,
+      'react/jsx-uses-vars': 2,
+      'react/no-array-index-key': 0, // 是否允许数组作为key
 
-      // 代码风格规则
-      "no-console":
-        process.env.NODE_ENV === "production"
-          ? [2, { allow: ["warn", "error"] }]
-          : 1,
-      "no-debugger": process.env.NODE_ENV === "production" ? 2 : 1,
-      semi: [2, "always"],
-      quotes: [2, "single"],
-      indent: [2, 2, { SwitchCase: 1 }],
-      "comma-dangle": [2, "always-multiline"],
-      "object-curly-spacing": [2, "always"],
-      "arrow-parens": [2, "as-needed"],
-      "max-len": [
+      // 代码风格规则 - 与Prettier冲突的规则已被禁用
+      'no-console': process.env.NODE_ENV === 'production' ? [2, { allow: ['warn', 'error'] }] : 1,
+      'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 1,
+      // 禁用可能与Prettier冲突的规则
+      // semi: [2, "always"],
+      // quotes: [2, "single"],
+      // indent: [2, 2, { SwitchCase: 1 }],
+      // "comma-dangle": [2, "always-multiline"],
+      // "object-curly-spacing": [2, "always"],
+      // "arrow-parens": [2, "as-needed"],
+      'max-len': [
         1,
         {
           code: 100,
@@ -99,39 +102,40 @@ export default tseslint.config(
       ],
 
       // 最佳实践规则
-      "no-var": 2,
-      "prefer-const": 2,
-      "no-multiple-empty-lines": [2, { max: 1 }],
-      eqeqeq: [2, "always"],
-      "no-param-reassign": 0,
-      "no-nested-ternary": 2,
-      "no-unneeded-ternary": 2,
-      "no-unused-expressions": 0,
-      "no-undef": 2,
-      "no-use-before-define": 0,
-      "no-duplicate-imports": 2,
-      "no-irregular-whitespace": 2,
-      "no-trailing-spaces": 2,
-      "no-multi-spaces": 2,
-      "no-floating-decimal": 2,
-      "no-empty-function": 2,
-      "no-return-await": 2,
-      "no-throw-literal": 2,
+      'no-var': 2,
+      'prefer-const': 2,
+      'no-multiple-empty-lines': [2, { max: 1 }],
+      eqeqeq: [2, 'always'],
+      'no-param-reassign': 0,
+      'no-nested-ternary': 2,
+      'no-unneeded-ternary': 2,
+      'no-unused-expressions': 0,
+      'no-undef': 2,
+      'no-use-before-define': 0,
+      'no-duplicate-imports': 2,
+      'no-irregular-whitespace': 2,
+      'no-trailing-spaces': 2,
+      'no-multi-spaces': 2,
+      'no-floating-decimal': 2,
+      'no-empty-function': 0, // 空函数
+      'no-return-await': 2,
+      'no-throw-literal': 2,
 
       // ES6+ 规则
-      "arrow-body-style": [2, "as-needed"],
-      "prefer-arrow-callback": 2,
-      "prefer-template": 2,
-      "no-useless-constructor": 2,
+      'arrow-body-style': [2, 'as-needed'],
+      'prefer-arrow-callback': 2,
+      'prefer-template': 2,
+      'no-useless-constructor': 2,
 
       // 其他规则
-      "no-restricted-syntax": [
+      'no-restricted-syntax': [
         2,
         {
-          selector: "ForInStatement",
-          message: "禁止使用 for-in 循环，请使用 for-of 或其他替代方案",
+          selector: 'ForInStatement',
+          message: '禁止使用 for-in 循环，请使用 for-of 或其他替代方案',
         },
       ],
     },
-  }
+    ignores: ['dist', 'mock', 'config'],
+  },
 );

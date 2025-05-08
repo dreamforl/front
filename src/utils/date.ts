@@ -10,7 +10,7 @@ export const formatDate = (dateString: string | Date): string => {
 
   // 一分钟内
   if (diffInSeconds < 60) {
-    return "刚刚";
+    return '刚刚';
   }
 
   // 一小时内
@@ -30,8 +30,8 @@ export const formatDate = (dateString: string | Date): string => {
 
   // 标准日期格式
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
 
   return `${year}-${month}-${day}`;
 };

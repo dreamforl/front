@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Article } from "@/types";
-import ArticleList from "../../home/modules/article-list";
-import Sidebar from "../../home/modules/sidebar";
-import styles from "./index.module.less";
-import { Categorie, getCategorie } from "@/api/categorie";
-import { getArticles } from "@/api";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Article } from '@/types';
+import ArticleList from '../../home/modules/article-list';
+import Sidebar from '../../home/modules/sidebar';
+import styles from './index.module.less';
+import { Categorie, getCategorie } from '@/api/categorie';
+import { getArticles } from '@/api';
 
 const CategoryDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,8 +19,6 @@ const CategoryDetailPage: React.FC = () => {
         const response = await getArticles();
         // 这里应该根据分类ID过滤文章，目前使用模拟数据
         setArticles(response.list);
-      } catch (error) {
-        console.error("获取文章失败:", error);
       } finally {
         setLoading(false);
       }

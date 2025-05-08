@@ -1,5 +1,5 @@
-import { Dict } from "@/api/dict";
-import { create } from "zustand";
+import { Dict } from '@/api/dict';
+import { create } from 'zustand';
 
 type DictStore = {
   dicts: Record<string, unknown>;
@@ -16,7 +16,7 @@ const useDictionaryStore = create<DictStore>((set, get) => ({
     const { dicts } = get();
     const { type } = dict;
     switch (type.toLocaleLowerCase()) {
-      case "json": {
+      case 'json': {
         dicts[code] = JSON.parse(dict.value);
         break;
       }

@@ -5,9 +5,36 @@ import styles from './index.module.less';
 
 // 表情包数据
 const emojis = [
-  '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇',
-  '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚',
-  '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩'
+  '😀',
+  '😃',
+  '😄',
+  '😁',
+  '😆',
+  '😅',
+  '😂',
+  '🤣',
+  '😊',
+  '😇',
+  '🙂',
+  '🙃',
+  '😉',
+  '😌',
+  '😍',
+  '🥰',
+  '😘',
+  '😗',
+  '😙',
+  '😚',
+  '😋',
+  '😛',
+  '😝',
+  '😜',
+  '🤪',
+  '🤨',
+  '🧐',
+  '🤓',
+  '😎',
+  '🤩',
 ];
 
 interface RichTextEditorProps {
@@ -25,12 +52,12 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
   initialValue = '',
   submitButtonText = '发表评论',
   showUserAvatar = true,
-  userAvatar = ''
+  userAvatar = '',
 }) => {
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
   const [isImageUploaderOpen, setIsImageUploaderOpen] = useState(false);
   const editorRef = useRef<HTMLDivElement>(null);
-  
+
   // 初始化编辑器内容
   useEffect(() => {
     if (editorRef.current && initialValue) {
@@ -72,7 +99,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
       const imgElement = document.createElement('img');
       imgElement.src = imageUrl;
       imgElement.className = styles.uploadedImage;
-      
+
       const selection = window.getSelection();
       if (selection && selection.rangeCount > 0) {
         const range = selection.getRangeAt(0);
@@ -85,7 +112,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
       } else {
         editorRef.current.appendChild(imgElement);
       }
-      
+
       // 关闭上传器
       setIsImageUploaderOpen(false);
       editorRef.current.focus();
@@ -112,7 +139,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
           <img src={userAvatar} alt="用户头像" />
         </div>
       )}
-      
+
       <div className={styles.editorContainer}>
         <div
           ref={editorRef}
@@ -124,7 +151,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
             setIsImageUploaderOpen(false);
           }}
         />
-        
+
         <div className={styles.toolbar}>
           <div className={styles.toolbarLeft}>
             <button
@@ -138,7 +165,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
             >
               <Smile size={20} />
             </button>
-            
+
             <button
               type="button"
               className={styles.toolbarButton}
@@ -148,16 +175,12 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
               <Image size={20} />
             </button>
           </div>
-          
-          <button
-            type="button"
-            className={styles.submitButton}
-            onClick={handleSubmit}
-          >
+
+          <button type="button" className={styles.submitButton} onClick={handleSubmit}>
             {submitButtonText}
           </button>
         </div>
-        
+
         {isEmojiPickerOpen && (
           <div className={styles.emojiPicker}>
             {emojis.map((emoji, index) => (
@@ -171,20 +194,17 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
             ))}
           </div>
         )}
-        
+
         {isImageUploaderOpen && (
           <div className={styles.uploaderContainer}>
             <div className={styles.uploaderHeader}>
               <h4>上传图片</h4>
-              <button
-                className={styles.closeButton}
-                onClick={() => setIsImageUploaderOpen(false)}
-              >
+              <button className={styles.closeButton} onClick={() => setIsImageUploaderOpen(false)}>
                 <X size={16} />
               </button>
             </div>
-            <ImageUploader 
-              onImageUploaded={handleImageUploaded} 
+            <ImageUploader
+              onImageUploaded={handleImageUploaded}
               maxSize={2}
               maxWidth={1920}
               maxHeight={1080}
@@ -196,4 +216,4 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
   );
 };
 
-export default RichTextEditor; 
+export default RichTextEditor;

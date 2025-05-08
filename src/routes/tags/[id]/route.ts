@@ -1,4 +1,4 @@
 export default {
-  path: "/tags/:id",
-  component: () => import("./index"),
+  path: '/tags/:id',
+  component: () => import('./index'),
 };

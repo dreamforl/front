@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, User, Feather, Moon } from "lucide-react";
-import useAppStore from "@/store";
-import { getCurrentUser } from "../../../../api";
-import styles from "./index.module.less";
-import useDictionaryStore from "@/store/dict";
-import ThemeToggle from "@/components/theme-toggle";
-import {
-  HEADER_NAV,
-  Header_nav,
-  WEBSIT_INFO,
-  WebSitInfo,
-} from "@/data/dictKey";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Search, User, Feather } from 'lucide-react';
+import useAppStore from '@/store';
+import { getCurrentUser } from '../../../../api';
+import styles from './index.module.less';
+import useDictionaryStore from '@/store/dict';
+import ThemeToggle from '@/components/theme-toggle';
+import { HEADER_NAV, Header_nav, WEBSIT_INFO, WebSitInfo } from '@/data/dictKey';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +14,7 @@ const Header: React.FC = () => {
   const { pathname } = useLocation();
   const { currentUser, setCurrentUser } = useAppStore();
   const { getDict } = useDictionaryStore();
-  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: "" });
+  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: '' });
   const navItems = getDict<Header_nav>(HEADER_NAV, []);
   // 监听滚动事件，用于改变导航栏样式
   useEffect(() => {
@@ -27,19 +22,15 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // 获取当前用户信息
   useEffect(() => {
     const fetchCurrentUser = async () => {
-      try {
-        const user = await getCurrentUser();
-        setCurrentUser(user);
-      } catch (error) {
-        console.error("获取用户信息失败:", error);
-      }
+      const user = await getCurrentUser();
+      setCurrentUser(user);
     };
 
     fetchCurrentUser();
@@ -50,7 +41,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link to="/">
@@ -64,11 +55,8 @@ const Header: React.FC = () => {
         {/* 桌面端导航 */}
         <nav className={styles.desktopNav}>
           <ul className={styles.navList}>
-            {navItems.map((item) => (
-              <li
-                key={item.path}
-                className={pathname === item.path ? styles.active : ""}
-              >
+            {navItems.map(item => (
+              <li key={item.path} className={pathname === item.path ? styles.active : ''}>
                 <Link to={item.path}>{item.label}</Link>
               </li>
             ))}
@@ -90,11 +78,7 @@ const Header: React.FC = () => {
               <User size={20} />
             </Link>
           )}
-          <button
-            className={styles.menuToggle}
-            onClick={toggleMenu}
-            aria-label="菜单"
-          >
+          <button className={styles.menuToggle} onClick={toggleMenu} aria-label="菜单">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -121,14 +105,11 @@ const Header: React.FC = () => {
       </div>
 
       {/* 移动端菜单 */}
-      <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ""}`}>
+      <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}>
         <nav>
           <ul>
-            {navItems.map((item) => (
-              <li
-                key={item.path}
-                className={pathname === item.path ? styles.active : ""}
-              >
+            {navItems.map(item => (
+              <li key={item.path} className={pathname === item.path ? styles.active : ''}>
                 <Link to={item.path} onClick={() => setIsMenuOpen(false)}>
                   {item.label}
                 </Link>

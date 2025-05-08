@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./index.module.less";
-import useAppStore from "@/store";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './index.module.less';
+import useAppStore from '@/store';
 
 const TagsPage: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
@@ -35,7 +35,7 @@ const TagsPage: React.FC = () => {
 
       <div className={styles.container}>
         <div className={styles.tagCloud}>
-          {tags.map((tag) => (
+          {tags.map(tag => (
             <Link
               key={tag.id}
               to={`/tags/${tag.id}`}

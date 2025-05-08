@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Article } from '../../types';
+import { Article, listRes } from '../../types';
 import { getArticles } from '../../api';
 import ArticleList from '../home/modules/article-list';
 import styles from './index.module.less';
@@ -8,7 +8,7 @@ import styles from './index.module.less';
 const SearchPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<listRes<Article>>({ list: [], total: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,15 +17,14 @@ const SearchPage: React.FC = () => {
         setLoading(true);
         const response = await getArticles();
         // 简单的客户端搜索实现
-        const filtered = response.data.filter(article => 
-          article.title.toLowerCase().includes(query.toLowerCase()) ||
-          article.intro.toLowerCase().includes(query.toLowerCase()) ||
-          article.author.name.toLowerCase().includes(query.toLowerCase()) ||
-          article.tags.some(tag => tag.name.toLowerCase().includes(query.toLowerCase()))
+        const filtered = response.list.filter(
+          article =>
+            article.title.toLowerCase().includes(query.toLowerCase()) ||
+            article.intro.toLowerCase().includes(query.toLowerCase()) ||
+            article.author.name.toLowerCase().includes(query.toLowerCase()) ||
+            article.tags.some(tag => tag.name.toLowerCase().includes(query.toLowerCase())),
         );
-        setArticles(filtered);
-      } catch (error) {
-        console.error('搜索文章失败:', error);
+        setArticles({ list: filtered, total: filtered.length });
       } finally {
         setLoading(false);
       }
@@ -44,7 +43,7 @@ const SearchPage: React.FC = () => {
       </div>
 
       <div className={styles.container}>
-        <ArticleList articles={articles} loading={loading} />
+        <ArticleList articlesData={articles} loading={loading} />
       </div>
     </div>
   );

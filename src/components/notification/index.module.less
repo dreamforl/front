@@ -6,7 +6,7 @@
   right: var(--spacing-5);
   z-index: var(--z-index-fixed);
   width: 320px;
-  
+
   @media @mobile {
     width: calc(100% - var(--spacing-8));
     right: var(--spacing-4);
@@ -25,19 +25,19 @@
   opacity: 0;
   animation: slideIn 0.3s ease forwards;
   border-left: 4px solid;
-  
+
   &.like {
     border-color: var(--primary-500);
   }
-  
+
   &.comment {
     border-color: var(--accent-500);
   }
-  
+
   &.system {
     border-color: var(--info);
   }
-  
+
   &.exiting {
     animation: slideOut 0.3s ease forwards;
   }
@@ -51,17 +51,17 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  
+
   &.like {
     background-color: var(--primary-50);
     color: var(--primary-500);
   }
-  
+
   &.comment {
     background-color: var(--accent-50);
     color: var(--accent-500);
   }
-  
+
   &.system {
     background-color: var(--info-50);
     color: var(--info);
@@ -106,7 +106,7 @@
   cursor: pointer;
   opacity: 0;
   transition: all var(--transition-fast) ease;
-  
+
   &:hover {
     color: var(--neutral-600);
   }

@@ -10,18 +10,18 @@ const useMediaQuery = (query: string): boolean => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(query);
-    
+
     // 初始化匹配状态
     setMatches(mediaQuery.matches);
-    
+
     // 监听窗口大小变化
     const handleResize = (event: MediaQueryListEvent) => {
       setMatches(event.matches);
     };
-    
+
     // 添加监听器
     mediaQuery.addEventListener('change', handleResize);
-    
+
     // 清理监听器
     return () => {
       mediaQuery.removeEventListener('change', handleResize);

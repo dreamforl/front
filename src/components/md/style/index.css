@@ -14,7 +14,7 @@
   font-size: 12px;
 }
 
-[data-theme="dark"].code-line::before {
+[data-theme='dark'].code-line::before {
   background-color: #282c34;
 }
 
@@ -71,7 +71,7 @@
 
 .code-header-right > span::before {
   background-color: var(--neutral-600);
-  content: var(--copy-text, "复制");
+  content: var(--copy-text, '复制');
 }
 
 .code-header-right > span:hover::before {
@@ -88,7 +88,7 @@
 
 .code-header-right > .copied::before {
   background-color: var(--success);
-  content: var(--copy-text, "复制成功");
+  content: var(--copy-text, '复制成功');
 }
 
 .code-header-right > .copied:hover::before {

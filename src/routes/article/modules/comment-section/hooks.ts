@@ -1,74 +1,78 @@
-import { getCommentsByArticleId } from "@/api/comment";
-import { Comment, listRes } from "@/types";
-import { useEffect, useRef, useState, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { Comment, listRes } from '@/types';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 
 // 模拟数据
 const mockComments: Comment[] = [
   {
     id: 1,
-    content: "这是一条主评论",
+    content: '这是一条主评论',
     author: {
-      id: "1",
-      name: "用户1",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=1"
+      id: '1',
+      name: '用户1',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=1',
+      email: '1',
     },
-    createdTime: "2024-03-20",
+    createdTime: '2024-03-20',
     articleId: 1,
     childrenCount: 2,
     childComments: [
       {
         id: 3,
-        content: "这是第一条子评论",
+        content: '这是第一条子评论',
         author: {
-          id: "2",
-          name: "用户2",
-          avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=2"
+          id: '2',
+          name: '用户2',
+          avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=2',
+          email: '1',
         },
-        createdTime: "2024-03-20",
+        createdTime: '2024-03-20',
         articleId: 1,
-        parentId: 1
+        parentId: 1,
       },
       {
         id: 4,
-        content: "这是第二条子评论",
+        content: '这是第二条子评论',
         author: {
-          id: "3",
-          name: "用户3",
-          avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=3"
+          id: '3',
+          name: '用户3',
+          avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=3',
+          email: '1',
         },
-        createdTime: "2024-03-20",
+        createdTime: '2024-03-20',
         articleId: 1,
-        parentId: 1
-      }
-    ]
+        parentId: 1,
+      },
+    ],
   },
   {
     id: 2,
-    content: "这是另一条主评论",
+    content: '这是另一条主评论',
     author: {
-      id: "4",
-      name: "用户4",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=4"
+      id: '4',
+      name: '用户4',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=4',
+      email: '1',
     },
-    createdTime: "2024-03-20",
+    createdTime: '2024-03-20',
     articleId: 1,
     childrenCount: 1,
     childComments: [
       {
         id: 5,
-        content: "这是一条回复",
+        content: '这是一条回复',
         author: {
-          id: "5",
-          name: "用户5",
-          avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=5"
+          id: '5',
+          name: '用户5',
+          avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=5',
+          email: '1',
         },
-        createdTime: "2024-03-20",
+        createdTime: '2024-03-20',
         articleId: 1,
-        parentId: 2
-      }
-    ]
-  }
+        parentId: 2,
+      },
+    ],
+  },
 ];
 
 export default function useBaseState() {
@@ -99,10 +103,10 @@ export default function useBaseState() {
         const startIndex = (page - 1) * pageSize;
         const endIndex = startIndex + pageSize;
         const paginatedComments = mockComments.slice(startIndex, endIndex);
-        
+
         const mockResponse = {
           list: paginatedComments,
-          total: mockComments.length
+          total: mockComments.length,
         };
 
         // 如果是替换模式或者是第一页，直接设置列表
@@ -113,14 +117,14 @@ export default function useBaseState() {
           childCommentPagesRef.current.clear();
         } else {
           // 否则，追加到现有列表
-          setMainComment((prev) => ({
+          setMainComment(prev => ({
             list: [...prev.list, ...mockResponse.list],
             total: mockResponse.total,
           }));
         }
 
         // 初始化子评论映射
-        mockResponse.list.forEach((item) => {
+        mockResponse.list.forEach(item => {
           const { childComments = [] } = item;
           // 为新的主评论创建子评论映射
           commentMap.current.set(item.id, childComments || []);
@@ -131,13 +135,11 @@ export default function useBaseState() {
         });
 
         setMainCommentPage(page);
-      } catch (error) {
-        console.error("获取主评论失败:", error);
       } finally {
         setLoading(false);
       }
     },
-    [id]
+    [id],
   );
 
   // 加载更多主评论
@@ -151,12 +153,12 @@ export default function useBaseState() {
       if (!id) return;
 
       try {
-        setChildLoading((prev) => ({ ...prev, [parentId]: true }));
+        setChildLoading(prev => ({ ...prev, [parentId]: true }));
 
         // 查找父评论的模拟子评论
         const parentComment = mockComments.find(comment => comment.id === parentId);
         const mockChildComments = parentComment?.childComments || [];
-        
+
         // 分页处理子评论
         const startIndex = (page - 1) * childPageSize;
         const endIndex = startIndex + childPageSize;
@@ -169,24 +171,19 @@ export default function useBaseState() {
         } else {
           // 追加到现有子评论
           const existingChildComments = commentMap.current.get(parentId) || [];
-          commentMap.current.set(parentId, [
-            ...existingChildComments,
-            ...paginatedChildComments,
-          ]);
+          commentMap.current.set(parentId, [...existingChildComments, ...paginatedChildComments]);
         }
 
         // 更新子评论页数记录
         childCommentPagesRef.current.set(parentId, page);
 
         // 触发更新
-        setMainComment((prev) => ({ ...prev }));
-      } catch (error) {
-        console.error(`获取评论ID ${parentId} 的子评论失败:`, error);
+        setMainComment(prev => ({ ...prev }));
       } finally {
-        setChildLoading((prev) => ({ ...prev, [parentId]: false }));
+        setChildLoading(prev => ({ ...prev, [parentId]: false }));
       }
     },
-    [id]
+    [id],
   );
 
   // 加载特定主评论的更多子评论
@@ -195,7 +192,7 @@ export default function useBaseState() {
       const currentPage = childCommentPagesRef.current.get(parentId) || 1;
       fetchChildComments(parentId, currentPage + 1, false);
     },
-    [fetchChildComments]
+    [fetchChildComments],
   );
 
   // 更新评论的方法 - 重新加载当前页
@@ -219,11 +216,10 @@ export default function useBaseState() {
     loadMoreChildComments,
     hasMoreMainComments: list.length < total,
     getChildCommentsCount: (parentId: number) => {
-      const comment = list.find((item) => item.id === parentId);
+      const comment = list.find(item => item.id === parentId);
       return comment?.childrenCount || 0;
     },
-    getLoadedChildCommentsCount: (parentId: number) => {
-      return commentMap.current.get(parentId)?.length || 0;
-    },
+    getLoadedChildCommentsCount: (parentId: number) =>
+      commentMap.current.get(parentId)?.length || 0,
   };
 }

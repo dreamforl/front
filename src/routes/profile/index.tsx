@@ -1,14 +1,7 @@
-import React from "react";
-import useAppStore from "@/store";
-import styles from "./index.module.less";
-import {
-  BookOpenText,
-  Heart,
-  Key,
-  MessageCircleMore,
-  Settings,
-  User,
-} from "lucide-react";
+import React from 'react';
+import useAppStore from '@/store';
+import styles from './index.module.less';
+import { BookOpenText, Heart, Key, MessageCircleMore, Settings, User } from 'lucide-react';
 
 const ProfilePage: React.FC = () => {
   const { currentUser } = useAppStore();
@@ -29,13 +22,9 @@ const ProfilePage: React.FC = () => {
       <div className={styles.banner}>
         <div className={styles.bannerContent}>
           <div className={styles.userInfo}>
-            <img
-              src={currentUser.avatar}
-              alt={currentUser.name}
-              className={styles.avatar}
-            />
+            <img src={currentUser.avatar} alt={currentUser.name} className={styles.avatar} />
             <h1>{currentUser.name}</h1>
-            <p>{currentUser.tips || "这个人很懒，什么都没留下..."}</p>
+            <p>{currentUser.tips || '这个人很懒，什么都没留下...'}</p>
           </div>
         </div>
       </div>
@@ -81,19 +70,13 @@ const ProfilePage: React.FC = () => {
                 </div>
                 <div className={styles.formGroup}>
                   <label>个人简介</label>
-                  <textarea
-                    value={currentUser.tips}
-                    placeholder="写点什么介绍自己..."
-                    readOnly
-                  />
+                  <textarea value={currentUser.tips} placeholder="写点什么介绍自己..." readOnly />
                 </div>
                 <div className={styles.formGroup}>
                   <label>注册时间</label>
                   <input
                     type="text"
-                    value={new Date(
-                      currentUser.createdTime
-                    ).toLocaleDateString()}
+                    value={new Date(currentUser.createdTime).toLocaleDateString()}
                     readOnly
                   />
                 </div>

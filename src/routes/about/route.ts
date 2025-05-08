@@ -1,4 +1,4 @@
 export default {
-  path: "/about",
-  component: () => import("./index"),
-}; 
+  path: '/about',
+  component: () => import('./index'),
+};

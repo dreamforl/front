@@ -1,19 +1,12 @@
-import React from "react";
-import styles from "./index.module.less";
-import {
-  Github,
-  Heart,
-  Lightbulb,
-  Mail,
-  MessageCircleX,
-  Users,
-} from "lucide-react";
-import useDictionaryStore from "@/store/dict";
-import { WEBSIT_INFO, WebSitInfo } from "@/data/dictKey";
+import React from 'react';
+import styles from './index.module.less';
+import { Github, Heart, Lightbulb, Mail, MessageCircleX, Users } from 'lucide-react';
+import useDictionaryStore from '@/store/dict';
+import { WEBSIT_INFO, WebSitInfo } from '@/data/dictKey';
 
 const AboutPage: React.FC = () => {
   const { getDict } = useDictionaryStore();
-  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: "" });
+  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: '' });
   return (
     <div className={styles.aboutPage}>
       <div className={styles.banner}>

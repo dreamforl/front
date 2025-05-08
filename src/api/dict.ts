@@ -1,4 +1,4 @@
-import { zwFetch } from "@/lib/fetch";
+import { zwFetch } from '@/lib/fetch';
 
 export type Dict = {
   id: number;
@@ -13,8 +13,7 @@ export type Dict = {
   updatedTime: string;
 };
 
-export const getDict = (code: string) =>
-  zwFetch<Dict>(`/api/dict/code/${code}`);
+export const getDict = (code: string) => zwFetch<Dict>(`/api/dict/code/${code}`);
 
 /**
  * 批量获取字典配置
@@ -22,6 +21,6 @@ export const getDict = (code: string) =>
  */
 export const patchGetDicts = (data: { codes: string[] }) =>
   zwFetch<Dict[]>(`/api/dict/code`, {
-    method: "post",
+    method: 'post',
     data,
   });

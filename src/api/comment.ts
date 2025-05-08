@@ -1,16 +1,15 @@
-import { zwFetch } from "@/lib/fetch";
-import { Comment, listRes } from "@/types";
+import { zwFetch } from '@/lib/fetch';
+import { Comment, listRes } from '@/types';
 
 export const getCommentsByArticleId = async (
   articleId: number,
   parentId: number = -1,
   page: number = 1,
-  pageSize: number = 10
-) => {
-  return zwFetch<listRes<Comment>>("/api/comment", {
+  pageSize: number = 10,
+) =>
+  zwFetch<listRes<Comment>>('/api/comment', {
     query: { articleId, parentId, page, pageSize },
   });
-};
 
 type AddComment = {
   articleId: number;
@@ -26,5 +25,5 @@ type AddComment = {
 export const addComment = (data: AddComment) =>
   zwFetch(`/api/comment`, {
     data,
-    method: "post",
+    method: 'post',
   });

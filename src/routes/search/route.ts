@@ -1,4 +1,4 @@
 export default {
-  path: "/search",
-  component: () => import("./index"),
-}; 
+  path: '/search',
+  component: () => import('./index'),
+};

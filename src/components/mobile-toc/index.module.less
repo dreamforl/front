@@ -16,7 +16,7 @@
   border: 2px solid var(--primary-200);
   box-shadow: var(--shadow-md);
   z-index: var(--z-index-fixed);
-  
+
   @media @mobile {
     right: var(--spacing-4);
     bottom: calc(var(--spacing-4) + 50px);
@@ -33,14 +33,14 @@
   height: 100%;
   z-index: var(--z-index-modal);
   visibility: hidden;
-  
+
   &.open {
     visibility: visible;
-    
+
     .overlay {
       opacity: 1;
     }
-    
+
     .content {
       transform: translateX(0);
     }
@@ -69,7 +69,7 @@
   transition: transform var(--transition-normal) ease;
   display: flex;
   flex-direction: column;
-  
+
   @media @mobile {
     width: 280px;
   }
@@ -81,19 +81,19 @@
   justify-content: space-between;
   padding: var(--spacing-4);
   border-bottom: 1px solid var(--neutral-200);
-  
+
   h3 {
     margin: 0;
     font-size: var(--font-size-lg);
   }
-  
+
   button {
     background: transparent;
     border: none;
     color: var(--neutral-500);
     cursor: pointer;
     padding: var(--spacing-2);
-    
+
     &:hover {
       color: var(--neutral-800);
     }
@@ -104,7 +104,7 @@
   flex: 1;
   overflow-y: auto;
   padding: var(--spacing-4);
-  
+
   ul {
     list-style: none;
     padding: 0;
@@ -114,7 +114,7 @@
 
 .tocItem {
   margin-bottom: var(--spacing-2);
-  
+
   button {
     width: 100%;
     text-align: left;
@@ -126,7 +126,7 @@
     cursor: pointer;
     transition: all var(--transition-fast) ease;
     font-size: var(--font-size-sm);
-    
+
     &:hover {
       background: var(--primary-50);
       color: var(--primary-600);
@@ -146,7 +146,9 @@
   padding-left: var(--spacing-5);
 }
 
-.level4, .level5, .level6 {
+.level4,
+.level5,
+.level6 {
   padding-left: var(--spacing-7);
 }
 

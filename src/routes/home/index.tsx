@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { getArticles } from "../../api";
-import { Article, listRes, Tag } from "../../types";
-import Banner from "./modules/banner";
-import ArticleList from "./modules/article-list";
-import Sidebar from "./modules/sidebar";
-import styles from "./index.module.less";
-import { getTags } from "@/api/tag";
+import React, { useEffect, useState } from 'react';
+import { getArticles } from '../../api';
+import { Article, listRes } from '../../types';
+import Banner from './modules/banner';
+import ArticleList from './modules/article-list';
+import Sidebar from './modules/sidebar';
+import styles from './index.module.less';
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -19,7 +18,6 @@ const HomePage: React.FC = () => {
       setLoading(true);
       getArticles()
         .then(setArticlesData)
-        .catch(console.log)
         .finally(() => setLoading(false));
     };
 

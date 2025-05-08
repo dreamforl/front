@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-6);
-  
+
   @media @mobile, @tablet {
     width: 100%;
   }
@@ -17,17 +17,17 @@
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-normal) ease;
-  
-  [data-theme="dark"] & {
+
+  [data-theme='dark'] & {
     background: var(--neutral-800);
     border: 1px solid var(--neutral-700);
   }
-  
-  [data-theme="dark"] & {
+
+  [data-theme='dark'] & {
     background: var(--neutral-800);
     border: 1px solid var(--neutral-700);
   }
-  
+
   &:hover {
     transform: translateY(-2px);
   }
@@ -65,12 +65,12 @@
   font-size: var(--font-size-lg);
   font-weight: 600;
   margin: 0 0 var(--spacing-2);
-  
-  [data-theme="dark"] & {
+
+  [data-theme='dark'] & {
     color: var(--neutral-100);
   }
-  
-  [data-theme="dark"] & {
+
+  [data-theme='dark'] & {
     color: var(--neutral-100);
   }
 }
@@ -120,7 +120,7 @@
   color: white;
   text-decoration: none;
   transition: opacity var(--transition-fast) ease;
-  
+
   &:hover {
     opacity: 0.9;
     text-decoration: none;
@@ -139,35 +139,35 @@
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: background-color var(--transition-fast) ease;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   &:hover {
     background-color: var(--primary-50);
     text-decoration: none;
-    
-    [data-theme="dark"] & {
+
+    [data-theme='dark'] & {
       background-color: var(--neutral-700);
     }
-    
-    [data-theme="dark"] & {
+
+    [data-theme='dark'] & {
       background-color: var(--neutral-700);
     }
-    
+
     .postTitle {
       color: var(--primary-600);
-      
-      [data-theme="dark"] & {
+
+      [data-theme='dark'] & {
         color: var(--primary-300);
       }
-      
-      [data-theme="dark"] & {
+
+      [data-theme='dark'] & {
         color: var(--primary-300);
       }
     }
-    
+
     img {
       transform: scale(1.05);
     }
@@ -180,7 +180,7 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-right: var(--spacing-3);
-  
+
   img {
     width: 100%;
     height: 100%;

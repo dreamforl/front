@@ -1,4 +1,4 @@
 export default {
-  path: "/categories",
-  component: () => import("./index"),
-}; 
+  path: '/categories',
+  component: () => import('./index'),
+};

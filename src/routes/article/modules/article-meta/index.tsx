@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Clock, Eye, Heart, MessageSquare, Share2 } from "lucide-react";
-import { Article } from "../../../../types";
-import { formatDate } from "../../../../utils/date";
-import { likeArticle } from "../../../../api";
-import { useNotificationStore } from "@/store/notification";
-import styles from "./index.module.less";
-import { copy } from "js-tools-function";
+import React, { useState } from 'react';
+import { Clock, Eye, Heart, MessageSquare, Share2 } from 'lucide-react';
+import { Article } from '../../../../types';
+import { formatDate } from '../../../../utils/date';
+import { likeArticle } from '../../../../api';
+import { useNotificationStore } from '@/store/notification';
+import styles from './index.module.less';
+import { copy } from 'js-tools-function';
 
 interface ArticleMetaProps {
   article: Article;
@@ -17,38 +17,29 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ article }) => {
   const { addNotification } = useNotificationStore();
 
   const handleLike = async () => {
-    try {
-      await likeArticle(article.id);
-      setIsLiked(!isLiked);
-      setLikeCount((prevCount) => (isLiked ? prevCount - 1 : prevCount + 1));
+    await likeArticle(article.id);
+    setIsLiked(!isLiked);
+    setLikeCount(prevCount => (isLiked ? prevCount - 1 : prevCount + 1));
 
-      if (!isLiked) {
-        addNotification({
-          type: "like",
-          title: "点赞成功",
-          message: `您点赞了文章《${article.title}》`,
-        });
-      }
-    } catch (error) {
-      console.error("点赞失败:", error);
+    if (!isLiked) {
+      addNotification({
+        type: 'like',
+        title: '点赞成功',
+        message: `您点赞了文章《${article.title}》`,
+      });
     }
   };
 
   const handleShare = () => {
     if (navigator.share) {
-      navigator
-        .share({
-          title: article.title,
-          text: article.intro,
-          url: window.location.href,
-        })
-        .catch((err) => console.error("分享失败:", err));
+      navigator.share({
+        title: article.title,
+        text: article.intro,
+        url: window.location.href,
+      });
     } else {
-      debugger
       // 复制链接到剪贴板
-      copy(window.location.href)
-        .then(() => alert("链接已复制到剪贴板"))
-        .catch((err) => console.error("复制失败:", err));
+      copy(window.location.href);
     }
   };
 
@@ -73,11 +64,8 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ article }) => {
           <span>{article.views}次阅读</span>
         </span>
 
-        <span
-          className={`${styles.statItem} ${isLiked ? styles.liked : ""}`}
-          onClick={handleLike}
-        >
-          <Heart size={16} fill={isLiked ? "currentColor" : "none"} />
+        <span className={`${styles.statItem} ${isLiked ? styles.liked : ''}`} onClick={handleLike}>
+          <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} />
           <span>{likeCount}</span>
         </span>
 

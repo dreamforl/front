@@ -1,4 +1,4 @@
-import { zwFetch } from "@/lib/fetch";
+import { zwFetch } from '@/lib/fetch';
 
 export type Categorie = {
   id: number;
@@ -9,6 +9,5 @@ export type Categorie = {
   count: number;
 };
 
-export const getCategories = () => zwFetch<Categorie[]>("/api/categorie");
-export const getCategorie = (id: number) =>
-  zwFetch<Categorie>(`/api/categorie/${id}`);
+export const getCategories = () => zwFetch<Categorie[]>('/api/categorie');
+export const getCategorie = (id: number) => zwFetch<Categorie>(`/api/categorie/${id}`);

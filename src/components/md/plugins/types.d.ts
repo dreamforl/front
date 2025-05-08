@@ -22,5 +22,3 @@ export type PluginItem = {
   };
   children?: PluginItem[];
 };
-
-type CountProps = {};

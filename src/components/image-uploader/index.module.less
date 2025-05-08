@@ -22,23 +22,24 @@
   transition: var(--transition-normal);
   cursor: pointer;
   min-height: 200px;
-  
-  &:hover, &.active {
+
+  &:hover,
+  &.active {
     border-color: var(--primary-400);
     background-color: var(--primary-50);
   }
-  
+
   p {
     margin: var(--spacing-3) 0 var(--spacing-2);
     color: var(--neutral-700);
     font-weight: 500;
   }
-  
+
   small {
     color: var(--neutral-500);
     font-size: var(--font-size-xs);
   }
-  
+
   svg {
     color: var(--primary-500);
   }
@@ -79,7 +80,7 @@
   cursor: pointer;
   transition: var(--transition-fast);
   color: var(--neutral-600);
-  
+
   &:hover {
     background-color: var(--danger-100);
     color: var(--danger-600);
@@ -87,7 +88,9 @@
   }
 }
 
-.error, .success, .uploading {
+.error,
+.success,
+.uploading {
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
@@ -100,7 +103,7 @@
   background-color: var(--danger-50);
   color: var(--danger-600);
   border: 1px solid var(--danger-100);
-  
+
   svg {
     color: var(--danger-500);
   }
@@ -110,7 +113,7 @@
   background-color: var(--success-50);
   color: var(--success-600);
   border: 1px solid var(--success-100);
-  
+
   svg {
     color: var(--success-500);
   }
@@ -133,6 +136,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-} 
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

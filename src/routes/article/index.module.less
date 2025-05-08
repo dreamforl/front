@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import '../../styles/variables.less';
 
 .articleDetail {
   min-height: 100vh;
@@ -17,7 +17,7 @@
   overflow: hidden;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -45,11 +45,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
   z-index: 1;
 }
 
@@ -132,23 +128,29 @@
   padding: var(--spacing-6);
   line-height: var(--line-height-normal);
 
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     background: var(--neutral-800);
     border: 1px solid var(--neutral-700);
-    
-    h1, h2, h3, h4, h5, h6 {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--neutral-100);
     }
-    
-    p, li {
+
+    p,
+    li {
       color: var(--neutral-300);
     }
-    
+
     code {
       background-color: var(--neutral-700);
       color: var(--neutral-200);
     }
-    
+
     blockquote {
       background-color: var(--neutral-700);
       border-left-color: var(--primary-500);
@@ -263,8 +265,8 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   padding: var(--spacing-4);
-  
-  [data-theme="dark"] & {
+
+  [data-theme='dark'] & {
     background: var(--neutral-800);
     border: 1px solid var(--neutral-700);
   }
@@ -481,7 +483,7 @@
 }
 
 // 暗黑模式适配
-[data-theme="dark"] {
+[data-theme='dark'] {
   .articleDetail {
     background-color: var(--neutral-900);
   }

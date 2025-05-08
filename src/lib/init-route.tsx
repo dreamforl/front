@@ -1,7 +1,7 @@
-import { lazy, Suspense } from "react";
-import { Navigate, RouteObject } from "react-router-dom";
-import type { Component, RouteConfig } from "@/types/routes";
-import Loading from "@/components/loading";
+import { lazy, Suspense } from 'react';
+import { Navigate, RouteObject } from 'react-router-dom';
+import type { Component, RouteConfig } from '@/types/routes';
+import Loading from '@/components/loading';
 
 const setElement = (loader: Component, config: RouteConfig) => {
   const C = lazy(loader);
@@ -19,7 +19,7 @@ export function initRoutes() {
   const layoutChildren: RouteObject[] = [];
   const root: RouteObject[] = [
     {
-      path: "/",
+      path: '/',
       element: (
         <Suspense fallback={<Loading fullScreen />}>
           <Layout></Layout>
@@ -29,7 +29,7 @@ export function initRoutes() {
     },
   ];
 
-  routesFiles.forEach((item) => {
+  routesFiles.forEach(item => {
     const { path, component, layout = true } = item;
     const routeItem = {
       path,
@@ -43,7 +43,7 @@ export function initRoutes() {
   });
 
   const PAGE_NOT_FOUND_ROUTE = {
-    path: "*",
+    path: '*',
     element: <Navigate to="/404" replace />,
   };
   root.push(PAGE_NOT_FOUND_ROUTE);

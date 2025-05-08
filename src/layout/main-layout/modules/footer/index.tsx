@@ -1,15 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Feather, Mail, MessageCircle } from "lucide-react";
-import styles from "./index.module.less";
-import useAppStore from "@/store";
-import SafeSvgRenderer from "@/lib/xss";
-import useDictionaryStore from "@/store/dict";
-import { WEBSIT_INFO, WebSitInfo } from "@/data/dictKey";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Feather, Mail, MessageCircle } from 'lucide-react';
+import styles from './index.module.less';
+import useAppStore from '@/store';
+import SafeSvgRenderer from '@/lib/xss';
+import useDictionaryStore from '@/store/dict';
+import { WEBSIT_INFO, WebSitInfo } from '@/data/dictKey';
 
 const Footer: React.FC = () => {
   const { getDict } = useDictionaryStore();
-  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: "" });
+  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: '' });
   const currentYear = new Date().getFullYear();
   const { categories } = useAppStore();
   return (
@@ -44,11 +44,9 @@ const Footer: React.FC = () => {
             <div className={styles.linkGroup}>
               <h3>分类</h3>
               <ul>
-                {categories.map((category) => (
+                {categories.map(category => (
                   <li key={category.id}>
-                    <Link to={`/categories/${category.id}`}>
-                      {category.name}
-                    </Link>
+                    <Link to={`/categories/${category.id}`}>{category.name}</Link>
                   </li>
                 ))}
               </ul>

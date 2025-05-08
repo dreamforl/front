@@ -12,7 +12,7 @@
   -webkit-backdrop-filter: var(--glass-backdrop-filter);
   border-bottom: var(--glass-border);
   transition: all var(--transition-normal) ease;
-  
+
   &.scrolled {
     height: 60px;
     background: var(--primary-50);
@@ -28,7 +28,7 @@
   height: 100%;
   margin: 0 auto;
   padding: 0 var(--spacing-5);
-  
+
   @media @mobile {
     padding: 0 var(--spacing-4);
   }
@@ -37,17 +37,17 @@
 .logo {
   display: flex;
   align-items: center;
-  
+
   a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    
+
     &:hover {
       text-decoration: none;
     }
   }
-  
+
   .logoIcon {
     display: flex;
     align-items: center;
@@ -56,13 +56,13 @@
     color: var(--primary-600);
     margin-right: var(--spacing-2);
   }
-  
+
   .logoText {
     font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--primary-700);
   }
-  
+
   @media @mobile {
     .logoText {
       font-size: var(--font-size-lg);
@@ -72,30 +72,30 @@
 
 .desktopNav {
   display: flex;
-  
+
   @media @mobile {
     display: none;
   }
-  
+
   .navList {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    
+
     li {
       margin: 0 var(--spacing-4);
       position: relative;
-      
+
       &.active a {
         color: var(--primary-600);
         font-weight: 600;
-        
+
         &:after {
           transform: scaleX(1);
         }
       }
-      
+
       a {
         display: block;
         padding: var(--spacing-3) 0;
@@ -104,7 +104,7 @@
         font-size: var(--font-size-base);
         position: relative;
         transition: color var(--transition-fast) ease;
-        
+
         &:after {
           content: '';
           position: absolute;
@@ -117,10 +117,10 @@
           transform-origin: center;
           transition: transform var(--transition-normal) ease;
         }
-        
+
         &:hover {
           color: var(--primary-600);
-          
+
           &:after {
             transform: scaleX(0.8);
           }
@@ -133,12 +133,14 @@
 .desktopActions {
   display: flex;
   align-items: center;
-  
+
   @media @mobile {
     display: none;
   }
-  
-  .searchButton, .loginButton, .userAvatar {
+
+  .searchButton,
+  .loginButton,
+  .userAvatar {
     display: flex;
     align-items: center;
     padding: var(--spacing-2) var(--spacing-3);
@@ -149,17 +151,17 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    
+
     span {
       margin-left: var(--spacing-2);
     }
-    
+
     &:hover {
       background: var(--primary-100);
       color: var(--primary-700);
     }
   }
-  
+
   .userAvatar {
     img {
       width: 28px;
@@ -173,12 +175,14 @@
 .mobileActions {
   display: none;
   align-items: center;
-  
+
   @media @mobile {
     display: flex;
   }
-  
-  .menuToggle, .searchButton, .loginButton {
+
+  .menuToggle,
+  .searchButton,
+  .loginButton {
     background: var(--primary-50);
     border: none;
     padding: var(--spacing-3);
@@ -194,7 +198,8 @@
     transition: all var(--transition-fast) ease;
     box-shadow: var(--shadow-sm);
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background: var(--primary-100);
       color: var(--primary-700);
       transform: scale(0.95);
@@ -205,12 +210,12 @@
       height: 28px;
     }
   }
-  
+
   .userAvatar {
     display: flex;
     align-items: center;
     margin-left: var(--spacing-3);
-    
+
     img {
       width: 40px;
       height: 40px;
@@ -233,26 +238,26 @@
   transition: transform var(--transition-normal) ease;
   overflow-y: auto;
   z-index: var(--z-index-modal);
-  
+
   &.open {
     transform: translateX(0);
   }
-  
+
   nav {
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
-      
+
       li {
         margin-bottom: var(--spacing-4);
-        
+
         &.active a {
           color: var(--primary-600);
           font-weight: 600;
           background: var(--primary-100);
         }
-        
+
         a {
           display: block;
           padding: var(--spacing-4) var(--spacing-5);
@@ -261,7 +266,7 @@
           text-decoration: none;
           transition: all var(--transition-fast) ease;
           border-radius: var(--radius-lg);
-          
+
           &:hover {
             color: var(--primary-600);
             background: var(--primary-100);

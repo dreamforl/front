@@ -1,4 +1,4 @@
-type ResponseType = "json" | "text" | "arrayBuffer" | "blob" | "formData";
+type ResponseType = 'json' | 'text' | 'arrayBuffer' | 'blob' | 'formData';
 
 interface FetchRequestInit extends RequestInit {
   query?: Record<string, unknown>;
@@ -8,11 +8,11 @@ interface FetchRequestInit extends RequestInit {
 
 const getDefaultOptions = (): FetchRequestInit => ({
   headers: {
-    "Content-Type": "application/json;charset=utf-8",
+    'Content-Type': 'application/json;charset=utf-8',
   },
-  credentials: "include", // 跨域请求中携带cookie
-  responseType: "json",
-  method: "GET",
+  credentials: 'include', // 跨域请求中携带cookie
+  responseType: 'json',
+  method: 'GET',
 });
 
 const originalFetch = window.fetch;
@@ -22,25 +22,20 @@ const originalFetch = window.fetch;
  * @param 与原生一致
  * @return Promise<T>
  */
-export async function zwFetch<T>(
-  url: string,
-  paramsOptions?: FetchRequestInit
-): Promise<T> {
+export async function zwFetch<T>(url: string, paramsOptions?: FetchRequestInit): Promise<T> {
   const defaultOptions = getDefaultOptions();
-  const options = paramsOptions
-    ? { ...defaultOptions, ...paramsOptions }
-    : defaultOptions;
+  const options = paramsOptions ? { ...defaultOptions, ...paramsOptions } : defaultOptions;
   const { data, method } = options;
   const searchParams = new URLSearchParams();
   if (options.query) {
-    Object.entries(options.query).forEach((item) => {
+    Object.entries(options.query).forEach(item => {
       const [key, value] = item;
-      searchParams.set(key, value ? `${value}` : "");
+      searchParams.set(key, value ? `${value}` : '');
     });
   }
   const query = searchParams.toString();
   if (query) {
-    url = `${url}${url.indexOf("?") > -1 ? "&" : "?"}${query}`;
+    url = `${url}${url.indexOf('?') > -1 ? '&' : '?'}${query}`;
   }
   if (data) {
     options.body = JSON.stringify(data);
@@ -48,9 +43,9 @@ export async function zwFetch<T>(
   options.method = method?.toUpperCase();
 
   // 模拟网络延迟
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  await new Promise(resolve => setTimeout(resolve, 400));
   return new Promise((resolve, reject) => {
-    originalFetch(url, options as RequestInit).then((res) => {
+    originalFetch(url, options as RequestInit).then(res => {
       // 状态码2开头表示成功
       if (res.ok) {
         const { responseType } = options;

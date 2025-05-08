@@ -16,7 +16,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
   parentId,
   replyTo,
   onCommentAdded,
-  onCancelReply
+  onCancelReply,
 }) => {
   const { currentUser } = useAppStore();
   const articleId = Number(useParams().id);
@@ -43,15 +43,12 @@ const CommentForm: React.FC<CommentFormProps> = ({
           <span>
             回复给 <strong>{replyTo.name}</strong>
           </span>
-          <button 
-            className={styles.cancelReply} 
-            onClick={onCancelReply}
-          >
+          <button className={styles.cancelReply} onClick={onCancelReply}>
             取消回复
           </button>
         </div>
       )}
-      
+
       <RichTextEditor
         onSubmit={handleSubmit}
         placeholder={replyTo ? `回复 ${replyTo.name}...` : '写下你的评论...'}
