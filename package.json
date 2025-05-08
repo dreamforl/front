@@ -17,7 +17,7 @@
     "bytemd": "^1.22.0",
     "classnames": "^2.5.1",
     "gsap": "^3.12.5",
-    "js-tools-function": "^0.1.13",
+    "js-tools-function": "^0.1.14",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -42,7 +42,6 @@
     "postcss": "^8.4.35",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
-    "vite": "^5.4.2",
-    "vite-plugin-style-import": "^2.0.0"
+    "vite": "^5.4.2"
   }
 }

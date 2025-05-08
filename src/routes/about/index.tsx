@@ -8,15 +8,18 @@ import {
   MessageCircleX,
   Users,
 } from "lucide-react";
-import { webSitName } from "@/data/global";
+import useDictionaryStore from "@/store/dict";
+import { WEBSIT_INFO, WebSitInfo } from "@/data/dictKey";
 
 const AboutPage: React.FC = () => {
+  const { getDict } = useDictionaryStore();
+  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: "" });
   return (
     <div className={styles.aboutPage}>
       <div className={styles.banner}>
         <div className={styles.bannerContent}>
           <h1>关于我们</h1>
-          <p>了解{webSitName}的故事</p>
+          <p>了解{websit.name}的故事</p>
         </div>
       </div>
 
@@ -25,7 +28,7 @@ const AboutPage: React.FC = () => {
           <section className={styles.intro}>
             <h2>我们的故事</h2>
             <p>
-              {webSitName}
+              {websit.name}
               创建于2025年，是一个致力于分享技术知识和生活感悟的平台。
               我们希望通过文字的力量，传递温暖，分享知识，连接志同道合的人。
             </p>
@@ -63,7 +66,7 @@ const AboutPage: React.FC = () => {
               <div className={styles.contactItem}>
                 <MessageCircleX />
                 <h3>微信公众号</h3>
-                <p>{webSitName}</p>
+                <p>{websit.name}</p>
               </div>
               <div className={styles.contactItem}>
                 <Github />

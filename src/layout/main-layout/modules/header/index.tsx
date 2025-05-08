@@ -4,9 +4,13 @@ import { Menu, X, Search, User, Feather } from "lucide-react";
 import useAppStore from "@/store";
 import { getCurrentUser } from "../../../../api";
 import styles from "./index.module.less";
-import { webSitName } from "@/data/global";
 import useDictionaryStore from "@/store/dict";
-import { Header_nav, WEBSIT_INFO } from "@/data/dictKey";
+import {
+  HEADER_NAV,
+  Header_nav,
+  WEBSIT_INFO,
+  WebSitInfo,
+} from "@/data/dictKey";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +18,8 @@ const Header: React.FC = () => {
   const { pathname } = useLocation();
   const { currentUser, setCurrentUser } = useAppStore();
   const { getDict } = useDictionaryStore();
-  const navItems = getDict<Header_nav>(WEBSIT_INFO, []);
+  const websit = getDict<WebSitInfo>(WEBSIT_INFO, { name: "" });
+  const navItems = getDict<Header_nav>(HEADER_NAV, []);
   // 监听滚动事件，用于改变导航栏样式
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +56,7 @@ const Header: React.FC = () => {
             <span className={styles.logoIcon}>
               <Feather size={24} />
             </span>
-            <span className={styles.logoText}>{webSitName}</span>
+            <span className={styles.logoText}>{websit.name}</span>
           </Link>
         </div>
 
