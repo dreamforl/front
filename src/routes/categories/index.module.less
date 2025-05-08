@@ -1,0 +1,136 @@
+@import '../../styles/variables.less';
+
+.categoriesPage {
+  min-height: 100vh;
+}
+
+.banner {
+  height: 300px;
+  background: linear-gradient(135deg, var(--primary-400), var(--secondary-400));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: -20px;
+  
+  @media @mobile {
+    height: 200px;
+  }
+}
+
+.bannerContent {
+  h1 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-3);
+    
+    @media @mobile {
+      font-size: var(--font-size-2xl);
+    }
+  }
+  
+  p {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+    margin: 0;
+    
+    @media @mobile {
+      font-size: var(--font-size-base);
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-5);
+  
+  @media @mobile {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.categoryCard {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal) ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    
+    .icon {
+      transform: scale(1.1);
+    }
+  }
+  
+  &.selected {
+    border: 2px solid var(--primary-500);
+  }
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing-5) auto var(--spacing-4);
+  transition: transform var(--transition-normal) ease;
+  
+  svg {
+    font-size: 32px;
+    color: white;
+  }
+}
+
+.content {
+  padding: 0 var(--spacing-5) var(--spacing-5);
+  text-align: center;
+  
+  h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-3);
+    color: var(--neutral-900);
+  }
+  
+  p {
+    color: var(--neutral-600);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-sm);
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-3);
+  border-top: 1px solid var(--neutral-200);
+  
+  span {
+    color: var(--neutral-500);
+    font-size: var(--font-size-sm);
+  }
+}
+
+.viewMore {
+  color: var(--primary-600);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}

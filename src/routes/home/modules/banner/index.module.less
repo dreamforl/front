@@ -1,0 +1,115 @@
+@import '../../../../styles/variables.less';
+
+.banner {
+  position: relative;
+  height: 500px;
+  background-image: linear-gradient(135deg, var(--primary-400), var(--secondary-400));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 var(--spacing-5);
+  overflow: hidden;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, rgba(250, 250, 250, 0.3));
+    backdrop-filter: blur(5px);
+  }
+  
+  @media @mobile {
+    height: 400px;
+    padding: 0 var(--spacing-4);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-4);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  @media @mobile {
+    font-size: 2.5rem;
+  }
+}
+
+.subtitle {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-6);
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @media @mobile {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-5);
+  }
+}
+
+.searchContainer {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  border-radius: var(--radius-full);
+  background: white;
+  padding: var(--spacing-2);
+  box-shadow: var(--shadow-lg);
+}
+
+.searchInput {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-base);
+  color: var(--neutral-800);
+  outline: none;
+  
+  &::placeholder {
+    color: var(--neutral-400);
+  }
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast) ease;
+  
+  &:hover {
+    background: var(--primary-600);
+  }
+  
+  @media @mobile {
+    padding: var(--spacing-3) var(--spacing-4);
+    
+    span {
+      display: none;
+    }
+  }
+}

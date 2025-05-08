@@ -1,0 +1,73 @@
+@import '../../../../styles/variables.less';
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-4);
+  
+  @media @mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+  }
+}
+
+.authorInfo {
+  margin-left: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+.authorTips {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+}
+
+.stats {
+  display: flex;
+  gap: var(--spacing-4);
+  
+  @media @mobile {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast) ease;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  &.liked {
+    color: var(--primary-300);
+  }
+}

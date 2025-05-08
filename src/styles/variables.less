@@ -1,0 +1,121 @@
+/* 暖色系主题配色 */
+:root {
+  /* 主色调 - 暖橙色 */
+  --primary-50: #fff7ed;  /* 最浅的主色调，用于背景 */
+  --primary-100: #ffedd5; /* 浅主色调，用于次级背景 */
+  --primary-200: #fed7aa; /* 用于分割线，边框等 */
+  --primary-300: #fdba74; /* 用于图标，次要按钮 */
+  --primary-400: #fb923c; /* 用于强调色 */
+  --primary-500: #f97316; /* 基础主色调，用于主要按钮、重点文字 */
+  --primary-600: #ea580c; /* 主色调深色版，用于悬停状态 */
+  --primary-700: #c2410c; /* 用于激活状态 */
+  --primary-800: #9a3412; /* 用于特殊强调 */
+  --primary-900: #7c2d12; /* 最深的主色调 */
+
+  /* 辅助色 - 暖粉色 */
+  --secondary-50: #fdf2f8;
+  --secondary-100: #fce7f3;
+  --secondary-200: #fbcfe8;
+  --secondary-300: #f9a8d4;
+  --secondary-400: #f472b6;
+  --secondary-500: #ec4899;
+  --secondary-600: #db2777;
+  --secondary-700: #be185d;
+  --secondary-800: #9d174d;
+  --secondary-900: #831843;
+
+  /* 强调色 - 青色 */
+  --accent-50: #ecfeff;
+  --accent-100: #cffafe;
+  --accent-200: #a5f3fc;
+  --accent-300: #67e8f9;
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-600: #0891b2;
+  --accent-700: #0e7490;
+  --accent-800: #155e75;
+  --accent-900: #164e63;
+
+  /* 中性色 */
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+
+  /* 状态颜色 */
+  --success: #10b981; /* 成功状态 */
+  --warning: #f59e0b; /* 警告状态 */
+  --error: #ef4444;   /* 错误状态 */
+  --info: #3b82f6;    /* 信息状态 */
+
+  /* 间距系统（基于8px） */
+  --spacing-1: 0.125rem; /* 2px */
+  --spacing-2: 0.25rem;  /* 4px */
+  --spacing-3: 0.5rem;   /* 8px */
+  --spacing-4: 0.75rem;  /* 12px */
+  --spacing-5: 1rem;     /* 16px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-7: 2rem;     /* 32px */
+  --spacing-8: 2.5rem;   /* 40px */
+  --spacing-9: 3rem;     /* 48px */
+  --spacing-10: 4rem;    /* 64px */
+
+  /* 边框圆角 */
+  --radius-sm: 0.25rem;  /* 小圆角 */
+  --radius-md: 0.5rem;   /* 中等圆角 */
+  --radius-lg: 1rem;     /* 大圆角 */
+  --radius-full: 9999px; /* 完全圆形 */
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* 磨砂玻璃效果 */
+  --glass-background: rgba(255, 255, 255, 0.5);
+  --glass-backdrop-filter: blur(10px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* 过渡时间 */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+
+  /* 字体 */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* 字体大小 */
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+
+  /* 行高 */
+  --line-height-tight: 1.2;    /* 标题 */
+  --line-height-normal: 1.5;   /* 正文 */
+  --line-height-loose: 1.75;   /* 大段落文本 */
+
+  /* Z-index 层级管理 */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}
+
+/* 响应式断点 */
+@mobile: ~"only screen and (max-width: 767px)";
+@tablet: ~"only screen and (min-width: 768px) and (max-width: 1023px)";
+@desktop: ~"only screen and (min-width: 1024px)";

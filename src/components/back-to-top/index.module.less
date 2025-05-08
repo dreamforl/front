@@ -1,0 +1,39 @@
+@import '../../styles/variables.less';
+
+.backToTop {
+  position: fixed;
+  right: var(--spacing-5);
+  bottom: var(--spacing-5);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary-500);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all var(--transition-normal) ease;
+  z-index: var(--z-index-fixed);
+
+  &:hover {
+    background: var(--primary-600);
+    transform: translateY(0) scale(1.1);
+  }
+
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @media @mobile {
+    right: var(--spacing-4);
+    bottom: var(--spacing-4);
+    width: 40px;
+    height: 40px;
+  }
+}

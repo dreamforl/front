@@ -1,0 +1,16 @@
+@import '../../styles/variables.less';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding: var(--spacing-5) 0;
+  
+  @media @mobile {
+    padding: var(--spacing-4) 0;
+  }
+}
