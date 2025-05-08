@@ -32,12 +32,6 @@ const SearchDrawer: React.FC<SearchDrawerProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleTagClick = (tag: string) => {
-    setSearchTerm(tag);
-    navigate(`/search?q=${encodeURIComponent(tag)}`);
-    onClose();
-  };
-
   return (
     <div className={`${styles.drawer} ${isOpen ? styles.open : ''}`}>
       <div className={styles.overlay} onClick={onClose} />
@@ -62,10 +56,10 @@ const SearchDrawer: React.FC<SearchDrawerProps> = ({ isOpen, onClose }) => {
         <div className={styles.suggestions}>
           <h3>热门搜索</h3>
           <div className={styles.tags}>
-            <button onClick={() => handleTagClick('React')}>React</button>
-            <button onClick={() => handleTagClick('TypeScript')}>TypeScript</button>
-            <button onClick={() => handleTagClick('前端开发')}>前端开发</button>
-            <button onClick={() => handleTagClick('JavaScript')}>JavaScript</button>
+            <button onClick={() => setSearchTerm('React')}>React</button>
+            <button onClick={() => setSearchTerm('TypeScript')}>TypeScript</button>
+            <button onClick={() => setSearchTerm('前端开发')}>前端开发</button>
+            <button onClick={() => setSearchTerm('JavaScript')}>JavaScript</button>
           </div>
         </div>
       </div>

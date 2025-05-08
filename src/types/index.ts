@@ -3,9 +3,9 @@ export interface User {
   id: string;
   name: string;
   tips?: string;
-  avatar?: string;
-  email?: string;
-  createdTime?: string;
+  avatar: string;
+  email: string;
+  createdTime: string;
   updatedTime?: string;
   roles?: string[];
   permissions?: string[];
@@ -45,6 +45,8 @@ export interface Comment {
   parentId?: number;
   replyTo?: User;
   childComments?: Comment[];
+  childrenCount?: number; // 子评论总数
+  likes?: number; // 点赞数
 }
 
 // 分页数据类型
@@ -55,7 +57,8 @@ export interface Pagination {
 }
 
 // 分页响应类型
-export interface PaginatedResponse<T> {
-  data: T[];
-  pagination: Pagination;
+export interface listRes<T> {
+  list: T[];
+  // pagination: Pagination;
+  total: number;
 }

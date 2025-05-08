@@ -1,0 +1,42 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+项目采用react
+typescript 5.5.4
+eslint版本是 9.24
+css采用 css module，复杂或者需要共享的内容可以使用less
+注释用中文,界面也是中文,不要额外引入组件
+
+文件命名规范 使用 kebab-case 规范  组件命名使用 PascalCase
+
+
+路由采用约定式路由，在当前文件夹 配置route.ts然后配置 path 、 component，当不需要layout的时候 配置为-1即可
+
+使用 lucide-react 作为图标库
+
+
+在一个文件夹中 data.ts放置静态数据、hooks.ts放置hook，route.ts放置路由配置，utils.ts放置工具函数，modules文件夹放置组件
+静态数据，或者说可配置数据放到当前目录的data.ts目录下，不要出现魔鬼数字。组件文件可以放到以组件名 kebab-case.tsx 里面，但是如果组件有样式文件 那么要创建文件夹，然后把组件放到index.tsx，样式放到index.css里面
+
+项目使用pnpm进行依赖管理
+
+绩效考核指标 -在开发中优先考虑核心网络生命（LCP、FID、CLS）。-使用Lighthouse和WebPageTest进行性能审核。
+
+
+目录说明
+src
+  api 公共接口
+  components 公共组件
+  data 公共数据
+  hooks 公共hook
+  layout 就是layout
+  utils 公共函数
+  store 全局数据管理
+  styles 全局样式
+  routes 路由组件
+
+尽可能使用styles/variables.less 目录下的变量，或者优化这些变量
+

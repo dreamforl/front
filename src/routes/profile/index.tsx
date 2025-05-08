@@ -1,7 +1,14 @@
-import React from 'react';
-import { Icon } from '@iconify/react';
-import useAppStore from '../../store';
-import styles from './index.module.less';
+import React from "react";
+import useAppStore from "@/store";
+import styles from "./index.module.less";
+import {
+  BookOpenText,
+  Heart,
+  Key,
+  MessageCircleMore,
+  Settings,
+  User,
+} from "lucide-react";
 
 const ProfilePage: React.FC = () => {
   const { currentUser } = useAppStore();
@@ -9,12 +16,10 @@ const ProfilePage: React.FC = () => {
   if (!currentUser) {
     return (
       <div className={styles.unauthorized}>
-        <Icon icon="mdi:lock" className={styles.lockIcon} />
+        <Key className={styles.lockIcon} />
         <h2>请先登录</h2>
         <p>登录后即可访问个人中心</p>
-        <button className={styles.loginButton}>
-          去登录
-        </button>
+        <button className={styles.loginButton}>去登录</button>
       </div>
     );
   }
@@ -24,9 +29,13 @@ const ProfilePage: React.FC = () => {
       <div className={styles.banner}>
         <div className={styles.bannerContent}>
           <div className={styles.userInfo}>
-            <img src={currentUser.avatar} alt={currentUser.name} className={styles.avatar} />
+            <img
+              src={currentUser.avatar}
+              alt={currentUser.name}
+              className={styles.avatar}
+            />
             <h1>{currentUser.name}</h1>
-            <p>{currentUser.tips || '这个人很懒，什么都没留下...'}</p>
+            <p>{currentUser.tips || "这个人很懒，什么都没留下..."}</p>
           </div>
         </div>
       </div>
@@ -36,23 +45,23 @@ const ProfilePage: React.FC = () => {
           <div className={styles.sidebar}>
             <nav className={styles.nav}>
               <a href="#profile" className={styles.active}>
-                <Icon icon="mdi:account" />
+                <User />
                 个人资料
               </a>
               <a href="#articles">
-                <Icon icon="mdi:file-document" />
+                <BookOpenText />
                 我的文章
               </a>
               <a href="#comments">
-                <Icon icon="mdi:comment" />
+                <MessageCircleMore />
                 我的评论
               </a>
               <a href="#likes">
-                <Icon icon="mdi:heart" />
+                <Heart />
                 我的点赞
               </a>
               <a href="#settings">
-                <Icon icon="mdi:cog" />
+                <Settings />
                 账号设置
               </a>
             </nav>
@@ -80,11 +89,15 @@ const ProfilePage: React.FC = () => {
                 </div>
                 <div className={styles.formGroup}>
                   <label>注册时间</label>
-                  <input type="text" value={new Date(currentUser.createdTime).toLocaleDateString()} readOnly />
+                  <input
+                    type="text"
+                    value={new Date(
+                      currentUser.createdTime
+                    ).toLocaleDateString()}
+                    readOnly
+                  />
                 </div>
-                <button className={styles.editButton}>
-                  编辑资料
-                </button>
+                <button className={styles.editButton}>编辑资料</button>
               </div>
             </section>
           </div>

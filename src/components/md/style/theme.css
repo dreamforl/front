@@ -1,0 +1,72 @@
+/* Highlight.js 主题 */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0 var(--spacing-3);
+  background-color: var(--neutral-50);
+  color: var(--neutral-800);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--neutral-600);
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-selector-tag {
+  color: var(--primary-500);
+}
+
+.hljs-attr,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: var(--accent-500);
+}
+
+.hljs-name,
+.hljs-regexp,
+.hljs-string {
+  color: var(--secondary-500);
+}
+
+.hljs-built_in,
+.hljs-type {
+  color: var(--accent-400);
+}
+
+.hljs-params,
+.hljs-variable {
+  color: var(--neutral-700);
+}
+
+.hljs-bullet,
+.hljs-number {
+  color: var(--secondary-400);
+}
+
+.hljs-symbol,
+.hljs-template-variable {
+  color: var(--accent-600);
+}
+
+.hljs-section,
+.hljs-title {
+  color: var(--primary-600);
+  font-weight: bold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Icon } from '@iconify/react';
-import { Menu, X, Search, User } from 'lucide-react';
+import { Menu, X, Search, User, Feather } from 'lucide-react';
 import useAppStore from '../../../../store';
 import { getCurrentUser } from '../../../../api';
 import styles from './index.module.less';
+import { webSitName } from '@/data/global';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,9 +54,9 @@ const Header: React.FC = () => {
         <div className={styles.logo}>
           <Link to="/">
             <span className={styles.logoIcon}>
-              <Icon icon="mdi:feather" />
+              <Feather size={24} />
             </span>
-            <span className={styles.logoText}>暖阳博客</span>
+            <span className={styles.logoText}>{webSitName}</span>
           </Link>
         </div>
 

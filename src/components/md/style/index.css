@@ -1,0 +1,97 @@
+/* 代码行号 */
+.code-line::before {
+  position: sticky;
+  left: 0;
+  display: inline-block;
+  box-sizing: content-box;
+  width: 18px;
+  padding: 0 10px;
+  color: gray;
+  text-align: center;
+  content: attr(data-line-count);
+  user-select: none;
+}
+
+[data-theme="dark"].code-line::before {
+  background-color: #282c34;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+  padding: 0 10px;
+  box-shadow: 0 4px 5px -6px #888;
+  position: relative;
+  height: 28px;
+}
+
+.code-header span::before {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 36px;
+  height: 28px;
+  padding: 0 8px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.code-header div {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.code-header-right {
+  right: 1.25rem;
+}
+
+.code-header-left {
+  left: 1.25rem;
+}
+
+.code-header-left > span::before {
+  content: var(--language);
+  background-color: rgba(61, 126, 154, 0.8);
+}
+
+.code-header-right:hover {
+  opacity: 1;
+}
+
+.code-header-right > span::before {
+  background-color: rgb(249 115 22 / 80%);
+  content: var(--copy-text, "复制");
+}
+
+.code-header-right > span:hover::before {
+  background-color: rgb(249 115 22 / 100%);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.code-header-right > span:active::before {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+  transform: translateY(0);
+}
+
+.code-header-right > .copied::before {
+  background-color: rgb(34 197 94 / 80%);
+  content: var(--copy-text, "复制成功");
+}
+
+.code-header-right > .copied:hover::before {
+  background-color: rgb(34 197 94 / 100%) !important;
+}
+
+.prose pre:hover::before {
+  opacity: 1;
+}
