@@ -54,6 +54,19 @@
   background: white;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
+  
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+    
+    h2, h3 {
+      color: var(--neutral-100);
+    }
+    
+    p {
+      color: var(--neutral-300);
+    }
+  }
   padding: var(--spacing-8);
   
   @media @mobile {

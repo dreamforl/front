@@ -64,6 +64,19 @@
   transition: all var(--transition-normal) ease;
   cursor: pointer;
   
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+    
+    h3 {
+      color: var(--neutral-100);
+    }
+    
+    p {
+      color: var(--neutral-400);
+    }
+  }
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);

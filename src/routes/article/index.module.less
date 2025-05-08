@@ -132,6 +132,30 @@
   padding: var(--spacing-6);
   line-height: var(--line-height-normal);
 
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--neutral-100);
+    }
+    
+    p, li {
+      color: var(--neutral-300);
+    }
+    
+    code {
+      background-color: var(--neutral-700);
+      color: var(--neutral-200);
+    }
+    
+    blockquote {
+      background-color: var(--neutral-700);
+      border-left-color: var(--primary-500);
+      color: var(--neutral-300);
+    }
+  }
+
   h1,
   h2,
   h3,
@@ -239,6 +263,11 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   padding: var(--spacing-4);
+  
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+  }
 }
 
 .tocTitle {

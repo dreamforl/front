@@ -3,6 +3,19 @@
 .footer {
   background-color: var(--neutral-800);
   color: var(--neutral-200);
+  
+  [data-theme="dark"] & {
+    background-color: var(--neutral-900);
+    border-top: 1px solid var(--neutral-800);
+    
+    .description {
+      color: var(--neutral-400);
+    }
+    
+    .copyright {
+      color: var(--neutral-500);
+    }
+  }
   padding: var(--spacing-7) 0 var(--spacing-5);
   
   a {

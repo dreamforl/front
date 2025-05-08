@@ -37,6 +37,16 @@
   transition: transform var(--transition-normal) ease,
     box-shadow var(--transition-normal) ease;
 
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+  }
+
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+  }
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
@@ -111,6 +121,14 @@
     color: var(--neutral-900);
     text-decoration: none;
     transition: color var(--transition-fast) ease;
+    
+    [data-theme="dark"] & {
+      color: var(--neutral-100);
+    }
+    
+    [data-theme="dark"] & {
+      color: var(--neutral-100);
+    }
 
     &:hover {
       color: var(--primary-600);
@@ -127,6 +145,14 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  
+  [data-theme="dark"] & {
+    color: var(--neutral-400);
+  }
+  
+  [data-theme="dark"] & {
+    color: var(--neutral-400);
+  }
 }
 
 .meta {

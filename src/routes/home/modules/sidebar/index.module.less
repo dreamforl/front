@@ -18,6 +18,16 @@
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-normal) ease;
   
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+  }
+  
+  [data-theme="dark"] & {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+  }
+  
   &:hover {
     transform: translateY(-2px);
   }
@@ -55,6 +65,14 @@
   font-size: var(--font-size-lg);
   font-weight: 600;
   margin: 0 0 var(--spacing-2);
+  
+  [data-theme="dark"] & {
+    color: var(--neutral-100);
+  }
+  
+  [data-theme="dark"] & {
+    color: var(--neutral-100);
+  }
 }
 
 .authorBio {
@@ -130,8 +148,24 @@
     background-color: var(--primary-50);
     text-decoration: none;
     
+    [data-theme="dark"] & {
+      background-color: var(--neutral-700);
+    }
+    
+    [data-theme="dark"] & {
+      background-color: var(--neutral-700);
+    }
+    
     .postTitle {
       color: var(--primary-600);
+      
+      [data-theme="dark"] & {
+        color: var(--primary-300);
+      }
+      
+      [data-theme="dark"] & {
+        color: var(--primary-300);
+      }
     }
     
     img {
