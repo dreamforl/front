@@ -20,6 +20,7 @@ const mockArticles: Article[] = [
     author: {
       id: "33ef8b96-21d5-11f0-9294-0242ac110002",
       name: "超级管理员",
+      email: "111",
       tips: "该用户很懒",
       avatar: "https://zw997.top/zwapp/default/boy.jpeg",
     },
@@ -48,6 +49,7 @@ const mockArticles: Article[] = [
     author: {
       id: "33ef8b96-21d5-11f0-9294-0242ac110002",
       name: "超级管理员",
+      email: "111",
       tips: "该用户很懒",
       avatar: "https://zw997.top/zwapp/default/boy.jpeg",
     },
@@ -81,6 +83,7 @@ const mockArticles: Article[] = [
     author: {
       id: "33ef8b96-21d5-11f0-9294-0242ac110002",
       name: "超级管理员",
+      email: "111",
       tips: "该用户很懒",
       avatar: "https://zw997.top/zwapp/default/boy.jpeg",
     },
@@ -98,15 +101,6 @@ const mockArticles: Article[] = [
       },
     ],
   },
-];
-
-const mockTags: Tag[] = [
-  { id: 1, name: "前端开发", color: "oklch(0.554 0.241 27.162)" },
-  { id: 2, name: "React", color: "oklch(0.651 0.241 194.808)" },
-  { id: 3, name: "TypeScript", color: "oklch(0.451 0.241 252.522)" },
-  { id: 4, name: "生活趣事", color: "oklch(0.656 0.241 354.308)" },
-  { id: 5, name: "旅行", color: "oklch(0.557 0.241 129.606)" },
-  { id: 6, name: "美食", color: "oklch(0.751 0.241 49.151)" },
 ];
 
 const mockUser: User = {
@@ -129,6 +123,7 @@ const mockComments: Comment[] = [
     author: {
       id: "33ef8c14-21d5-11f0-9294-0242ac110002",
       name: "技术爱好者",
+      email: "111",
       tips: "前端开发者",
       avatar: "https://zw997.top/zwapp/default/girl.jpeg",
     },
@@ -141,6 +136,7 @@ const mockComments: Comment[] = [
         author: {
           id: "33ef8b96-21d5-11f0-9294-0242ac110002",
           name: "超级管理员",
+          email: "111",
           tips: "该用户很懒",
           avatar: "https://zw997.top/zwapp/default/boy.jpeg",
         },
@@ -149,6 +145,7 @@ const mockComments: Comment[] = [
         replyTo: {
           id: "33ef8c14-21d5-11f0-9294-0242ac110002",
           name: "技术爱好者",
+          email: "111",
           tips: "前端开发者",
           avatar: "https://zw997.top/zwapp/default/girl.jpeg",
         },
@@ -162,6 +159,7 @@ const mockComments: Comment[] = [
     author: {
       id: "33ef8d36-21d5-11f0-9294-0242ac110002",
       name: "学习者",
+      email: "111",
       tips: "持续学习中",
       avatar: "https://zw997.top/zwapp/default/boy.jpeg",
     },
@@ -170,55 +168,22 @@ const mockComments: Comment[] = [
   },
 ];
 
-// 模拟 API 函数
 export const getArticles = async (
   page = 1,
   pageSize = 10
-): Promise<listRes<Article>> => {
-  // 模拟网络延迟
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  return zwFetch<listRes<Article>>("/api/article", {
-    query: { page, pageSize },
-  });
-  // return {
-  //   data: mockArticles,
-  //   pagination: {
-  //     current: page,
-  //     pageSize,
-  //     total: mockArticles.length,
-  //   },
-  // };
-};
+): Promise<listRes<Article>> =>
+  zwFetch("/api/article", { query: { page, pageSize } });
 
-export const getArticleById = async (id: number): Promise<Article | null> => {
-  // 模拟网络延迟
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
-  // const article = mockArticles.find((article) => article.id === id);
-  // return article || null;
-  return zwFetch(`/api/article/${id}`);
-};
-
-export const getHotTags = async (): Promise<Tag[]> => {
-  // 模拟网络延迟
-  await new Promise((resolve) => setTimeout(resolve, 300));
-
-  return mockTags;
-};
+export const getArticleById = async (id: number) =>
+  zwFetch<Article>(`/api/article/${id}`);
 
 export const getCurrentUser = async (): Promise<User> => {
-  // 模拟网络延迟
-  await new Promise((resolve) => setTimeout(resolve, 300));
-
   return mockUser;
 };
 
 export const likeArticle = async (
   articleId: number
 ): Promise<{ success: boolean }> => {
-  // 模拟网络延迟
-  await new Promise((resolve) => setTimeout(resolve, 300));
-
   // 模拟点赞操作
   const article = mockArticles.find((a) => a.id === articleId);
   if (article) {

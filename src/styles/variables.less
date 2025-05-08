@@ -117,128 +117,69 @@
   --z-index-popover: 1060;
   --z-index-tooltip: 1070;
 }
+
 /* 暗黑模式主题配色 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* 主色调 - 暖橙色，暗黑模式下的调整 */
-    --primary-50: #7c2d12;
-    --primary-100: #9a3412;
-    --primary-200: #c2410c;
-    --primary-300: #ea580c;
-    --primary-400: #f97316;
-    --primary-500: #fb923c;
-    --primary-600: #fdba74;
-    --primary-700: #ffedd5;
-    --primary-800: #fff7ed;
-    --primary-900: #ffffff;
+[data-theme="dark"] {
+  /* 主色调 - 暖橙色，暗黑模式下的调整 */
+  --primary-50: #7c2d12;
+  --primary-100: #9a3412;
+  --primary-200: #c2410c;
+  --primary-300: #ea580c;
+  --primary-400: #f97316;
+  --primary-500: #fb923c;
+  --primary-600: #fdba74;
+  --primary-700: #ffedd5;
+  --primary-800: #fff7ed;
+  --primary-900: #ffffff;
 
-    /* 辅助色 - 暖粉色，暗黑模式下的调整 */
-    --secondary-50: #831843;
-    --secondary-100: #9d174d;
-    --secondary-200: #be185d;
-    --secondary-300: #db2777;
-    --secondary-400: #ec4899;
-    --secondary-500: #f472b6;
-    --secondary-600: #f9a8d4;
-    --secondary-700: #fbcfe8;
-    --secondary-800: #fce7f3;
-    --secondary-900: #fdf2f8;
+  /* 辅助色 - 暖粉色，暗黑模式下的调整 */
+  --secondary-50: #831843;
+  --secondary-100: #9d174d;
+  --secondary-200: #be185d;
+  --secondary-300: #db2777;
+  --secondary-400: #ec4899;
+  --secondary-500: #f472b6;
+  --secondary-600: #f9a8d4;
+  --secondary-700: #fbcfe8;
+  --secondary-800: #fce7f3;
+  --secondary-900: #fdf2f8;
 
-    /* 强调色 - 青色，暗黑模式下的调整 */
-    --accent-50: #164e63;
-    --accent-100: #155e75;
-    --accent-200: #0e7490;
-    --accent-300: #0891b2;
-    --accent-400: #06b6d4;
-    --accent-500: #22d3ee;
-    --accent-600: #67e8f9;
-    --accent-700: #a5f3fc;
-    --accent-800: #cffafe;
-    --accent-900: #ecfeff;
+  /* 强调色 - 青色，暗黑模式下的调整 */
+  --accent-50: #164e63;
+  --accent-100: #155e75;
+  --accent-200: #0e7490;
+  --accent-300: #0891b2;
+  --accent-400: #06b6d4;
+  --accent-500: #22d3ee;
+  --accent-600: #67e8f9;
+  --accent-700: #a5f3fc;
+  --accent-800: #cffafe;
+  --accent-900: #ecfeff;
 
-    /* 中性色，暗黑模式下的调整 */
-    --neutral-50: #171717;
-    --neutral-100: #262626;
-    --neutral-200: #404040;
-    --neutral-300: #525252;
-    --neutral-400: #737373;
-    --neutral-500: #a3a3a3;
-    --neutral-600: #d4d4d4;
-    --neutral-700: #e5e5e5;
-    --neutral-800: #f5f5f5;
-    --neutral-900: #fafafa;
+  /* 中性色，暗黑模式下的调整 */
+  --neutral-50: #171717;
+  --neutral-100: #262626;
+  --neutral-200: #404040;
+  --neutral-300: #525252;
+  --neutral-400: #737373;
+  --neutral-500: #a3a3a3;
+  --neutral-600: #d4d4d4;
+  --neutral-700: #e5e5e5;
+  --neutral-800: #f5f5f5;
+  --neutral-900: #fafafa;
 
-    /* 状态颜色，暗黑模式下保持不变 */
-    --success: #10b981;
-    --warning: #f59e0b;
-    --error: #ef4444;
-    --info: #3b82f6;
+  /* 状态颜色，暗黑模式下保持不变 */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
 
-    /* 间距系统、边框圆角、阴影、过渡时间、字体、行高、Z-index 层级管理保持不变 */
-    /* 间距系统（基于8px） */
-    --spacing-1: 0.125rem;
-    --spacing-2: 0.25rem;
-    --spacing-3: 0.5rem;
-    --spacing-4: 0.75rem;
-    --spacing-5: 1rem;
-    --spacing-6: 1.5rem;
-    --spacing-7: 2rem;
-    --spacing-8: 2.5rem;
-    --spacing-9: 3rem;
-    --spacing-10: 4rem;
-
-    /* 边框圆角 */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-    --radius-full: 9999px;
-
-    /* 阴影 */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-    /* 磨砂玻璃效果 */
-    --glass-background: rgba(0, 0, 0, 0.5);
-    --glass-backdrop-filter: blur(10px);
-    --glass-border: 1px solid rgba(0, 0, 0, 0.18);
-
-    /* 过渡时间 */
-    --transition-fast: 150ms;
-    --transition-normal: 250ms;
-    --transition-slow: 350ms;
-
-    /* 字体 */
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, sans-serif;
-
-    /* 字体大小 */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
-
-    /* 行高 */
-    --line-height-tight: 1.2;
-    --line-height-normal: 1.5;
-    --line-height-loose: 1.75;
-
-    /* Z-index 层级管理 */
-    --z-index-dropdown: 1000;
-    --z-index-sticky: 1020;
-    --z-index-fixed: 1030;
-    --z-index-modal-backdrop: 1040;
-    --z-index-modal: 1050;
-    --z-index-popover: 1060;
-    --z-index-tooltip: 1070;
-  }
+  /* 磨砂玻璃效果 */
+  --glass-background: rgba(0, 0, 0, 0.5);
+  --glass-backdrop-filter: blur(10px);
+  --glass-border: 1px solid rgba(0, 0, 0, 0.18);
 }
+
 /* 响应式断点 */
 @mobile: ~"only screen and (max-width: 767px)";
 @tablet: ~"only screen and (min-width: 768px) and (max-width: 1023px)";

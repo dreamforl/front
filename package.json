@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
+    "start": "set ENV=dev && vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -15,6 +16,7 @@
     "@bytemd/react": "^1.22.0",
     "bytemd": "^1.22.0",
     "classnames": "^2.5.1",
+    "gsap": "^3.12.5",
     "js-tools-function": "^0.1.13",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
@@ -22,6 +24,7 @@
     "react-loading-skeleton": "^3.4.0",
     "react-router-dom": "^6.22.3",
     "unist-util-visit": "^5.0.0",
+    "vite-plugin-mock-dev-server": "^1.8.5",
     "zustand": "^4.5.0"
   },
   "devDependencies": {

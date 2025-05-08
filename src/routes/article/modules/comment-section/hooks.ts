@@ -3,6 +3,74 @@ import { Comment, listRes } from "@/types";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
+// 模拟数据
+const mockComments: Comment[] = [
+  {
+    id: 1,
+    content: "这是一条主评论",
+    author: {
+      id: "1",
+      name: "用户1",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=1"
+    },
+    createdTime: "2024-03-20",
+    articleId: 1,
+    childrenCount: 2,
+    childComments: [
+      {
+        id: 3,
+        content: "这是第一条子评论",
+        author: {
+          id: "2",
+          name: "用户2",
+          avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=2"
+        },
+        createdTime: "2024-03-20",
+        articleId: 1,
+        parentId: 1
+      },
+      {
+        id: 4,
+        content: "这是第二条子评论",
+        author: {
+          id: "3",
+          name: "用户3",
+          avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=3"
+        },
+        createdTime: "2024-03-20",
+        articleId: 1,
+        parentId: 1
+      }
+    ]
+  },
+  {
+    id: 2,
+    content: "这是另一条主评论",
+    author: {
+      id: "4",
+      name: "用户4",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=4"
+    },
+    createdTime: "2024-03-20",
+    articleId: 1,
+    childrenCount: 1,
+    childComments: [
+      {
+        id: 5,
+        content: "这是一条回复",
+        author: {
+          id: "5",
+          name: "用户5",
+          avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=5"
+        },
+        createdTime: "2024-03-20",
+        articleId: 1,
+        parentId: 2
+      }
+    ]
+  }
+];
+
 export default function useBaseState() {
   const { id } = useParams<{ id: string }>();
   const [{ list, total }, setMainComment] = useState<listRes<Comment>>({
@@ -27,32 +95,32 @@ export default function useBaseState() {
 
       try {
         setLoading(true);
-        // 获取指定页数的主评论
-        const res = await getCommentsByArticleId(
-          Number(id),
-          -1,
-          page,
-          pageSize
-        );
-        const { list: newList } = res;
+        // 使用模拟数据
+        const startIndex = (page - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const paginatedComments = mockComments.slice(startIndex, endIndex);
+        
+        const mockResponse = {
+          list: paginatedComments,
+          total: mockComments.length
+        };
 
         // 如果是替换模式或者是第一页，直接设置列表
         if (replace || page === 1) {
-          setMainComment(res);
+          setMainComment(mockResponse);
           // 清空当前已有的评论映射
           commentMap.current.clear();
           childCommentPagesRef.current.clear();
         } else {
           // 否则，追加到现有列表
           setMainComment((prev) => ({
-            list: [...prev.list, ...newList],
-            total: res.total,
+            list: [...prev.list, ...mockResponse.list],
+            total: mockResponse.total,
           }));
         }
 
         // 初始化子评论映射
-        newList.forEach((item) => {
-          console.log("item:", item);
+        mockResponse.list.forEach((item) => {
           const { childComments = [] } = item;
           // 为新的主评论创建子评论映射
           commentMap.current.set(item.id, childComments || []);
@@ -85,25 +153,25 @@ export default function useBaseState() {
       try {
         setChildLoading((prev) => ({ ...prev, [parentId]: true }));
 
-        // 获取特定主评论下的子评论
-        const res = await getCommentsByArticleId(
-          Number(id),
-          parentId,
-          page,
-          childPageSize
-        );
-        const { list: newChildList } = res;
+        // 查找父评论的模拟子评论
+        const parentComment = mockComments.find(comment => comment.id === parentId);
+        const mockChildComments = parentComment?.childComments || [];
+        
+        // 分页处理子评论
+        const startIndex = (page - 1) * childPageSize;
+        const endIndex = startIndex + childPageSize;
+        const paginatedChildComments = mockChildComments.slice(startIndex, endIndex);
 
         // 更新子评论列表
         if (replace || page === 1) {
           // 替换现有子评论
-          commentMap.current.set(parentId, newChildList);
+          commentMap.current.set(parentId, paginatedChildComments);
         } else {
           // 追加到现有子评论
           const existingChildComments = commentMap.current.get(parentId) || [];
           commentMap.current.set(parentId, [
             ...existingChildComments,
-            ...newChildList,
+            ...paginatedChildComments,
           ]);
         }
 
@@ -139,6 +207,7 @@ export default function useBaseState() {
   useEffect(() => {
     fetchMainComments(1, true);
   }, [fetchMainComments]);
+
   return {
     list,
     total,

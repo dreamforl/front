@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Search, User, Feather } from 'lucide-react';
-import useAppStore from '../../../../store';
-import { getCurrentUser } from '../../../../api';
-import styles from './index.module.less';
-import { webSitName } from '@/data/global';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Search, User, Feather } from "lucide-react";
+import useAppStore from "@/store";
+import { getCurrentUser } from "../../../../api";
+import styles from "./index.module.less";
+import { webSitName } from "@/data/global";
+import useDictionaryStore from "@/store/dict";
+import { Header_nav, WEBSIT_INFO } from "@/data/dictKey";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { pathname } = useLocation();
   const { currentUser, setCurrentUser } = useAppStore();
-
+  const { getDict } = useDictionaryStore();
+  const navItems = getDict<Header_nav>(WEBSIT_INFO, []);
   // 监听滚动事件，用于改变导航栏样式
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // 获取当前用户信息
@@ -29,27 +32,19 @@ const Header: React.FC = () => {
         const user = await getCurrentUser();
         setCurrentUser(user);
       } catch (error) {
-        console.error('获取用户信息失败:', error);
+        console.error("获取用户信息失败:", error);
       }
     };
 
     fetchCurrentUser();
   }, [setCurrentUser]);
 
-  // 导航菜单项
-  const navItems = [
-    { label: '首页', path: '/' },
-    { label: '分类', path: '/categories' },
-    { label: '标签', path: '/tags' },
-    { label: '关于', path: '/about' },
-  ];
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link to="/">
@@ -64,7 +59,10 @@ const Header: React.FC = () => {
         <nav className={styles.desktopNav}>
           <ul className={styles.navList}>
             {navItems.map((item) => (
-              <li key={item.path} className={pathname === item.path ? styles.active : ''}>
+              <li
+                key={item.path}
+                className={pathname === item.path ? styles.active : ""}
+              >
                 <Link to={item.path}>{item.label}</Link>
               </li>
             ))}
@@ -85,7 +83,11 @@ const Header: React.FC = () => {
               <User size={20} />
             </Link>
           )}
-          <button className={styles.menuToggle} onClick={toggleMenu} aria-label="菜单">
+          <button
+            className={styles.menuToggle}
+            onClick={toggleMenu}
+            aria-label="菜单"
+          >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -111,11 +113,14 @@ const Header: React.FC = () => {
       </div>
 
       {/* 移动端菜单 */}
-      <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}>
+      <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ""}`}>
         <nav>
           <ul>
             {navItems.map((item) => (
-              <li key={item.path} className={pathname === item.path ? styles.active : ''}>
+              <li
+                key={item.path}
+                className={pathname === item.path ? styles.active : ""}
+              >
                 <Link to={item.path} onClick={() => setIsMenuOpen(false)}>
                   {item.label}
                 </Link>

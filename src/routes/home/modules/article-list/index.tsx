@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Clock, Eye, Heart, MessageSquare } from "lucide-react";
 import { Article, listRes } from "../../../../types";
 import { formatDate } from "../../../../utils/date";
+import { useGsapStagger } from "@/hooks/use-gsap";
 import styles from "./index.module.less";
 
 interface ArticleListProps {
@@ -12,6 +13,13 @@ interface ArticleListProps {
 
 const ArticleList: React.FC<ArticleListProps> = ({ articlesData, loading }) => {
   const { list, total } = articlesData;
+  console.log('list:', list)
+  const articlesRef = useGsapStagger('.article-card', {
+    start: 'top bottom-=100',
+    once: true,
+    markers: false
+  });
+
   if (loading) {
     return (
       <div className={styles.loading}>
@@ -33,9 +41,9 @@ const ArticleList: React.FC<ArticleListProps> = ({ articlesData, loading }) => {
     <div className={styles.articleList}>
       <h2 className={styles.sectionTitle}>最新文章</h2>
 
-      <div className={styles.articles}>
+      <div className={styles.articles} ref={articlesRef}>
         {list.map((article) => (
-          <article key={article.id} className={styles.articleCard}>
+          <article key={article.id} className={`${styles.articleCard} article-card`}>
             <Link to={`/article/${article.id}`} className={styles.coverLink}>
               <div className={styles.cover}>
                 <img src={article.cover} alt={article.title} />

@@ -22,7 +22,7 @@ const originalFetch = window.fetch;
  * @param 与原生一致
  * @return Promise<T>
  */
-export function zwFetch<T>(
+export async function zwFetch<T>(
   url: string,
   paramsOptions?: FetchRequestInit
 ): Promise<T> {
@@ -46,6 +46,9 @@ export function zwFetch<T>(
     options.body = JSON.stringify(data);
   }
   options.method = method?.toUpperCase();
+
+  // 模拟网络延迟
+  await new Promise((resolve) => setTimeout(resolve, 400));
   return new Promise((resolve, reject) => {
     originalFetch(url, options as RequestInit).then((res) => {
       // 状态码2开头表示成功

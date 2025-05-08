@@ -1,0 +1,95 @@
+@import '../../../styles/variables.less';
+
+.tagDetail {
+  min-height: 100vh;
+}
+
+.banner {
+  height: 300px;
+  background: linear-gradient(135deg, var(--secondary-400), var(--accent-400));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: -20px;
+  
+  @media @mobile {
+    height: 200px;
+  }
+}
+
+.bannerContent {
+  h1 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-3);
+    
+    @media @mobile {
+      font-size: var(--font-size-2xl);
+    }
+  }
+  
+  p {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+    margin: 0;
+    
+    @media @mobile {
+      font-size: var(--font-size-base);
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-5);
+  
+  @media @mobile {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+}
+
+.content {
+  display: flex;
+  gap: var(--spacing-6);
+  
+  @media @mobile {
+    flex-direction: column;
+  }
+}
+
+.main {
+  flex: 1;
+}
+
+.sidebar {
+  width: 300px;
+  
+  @media @mobile {
+    width: 100%;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: var(--neutral-500);
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--primary-100);
+  border-top-color: var(--primary-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-4);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

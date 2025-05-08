@@ -10,6 +10,7 @@ export interface User {
   roles?: string[];
   permissions?: string[];
 }
+type Author = Pick<User, "id" | "name" | "tips" | "email" | "avatar">;
 
 // 标签类型
 export interface Tag {
@@ -30,7 +31,7 @@ export interface Article {
   createdTime: string;
   updatedTime: string;
   content: string;
-  author: User;
+  author: Author;
   isLiked?: number;
   tags: Tag[];
 }
@@ -40,25 +41,18 @@ export interface Comment {
   id: number;
   content: string;
   createdTime: string;
-  author: User;
+  author: Author;
   articleId: number;
   parentId?: number;
-  replyTo?: User;
+  replyTo?: Author;
   childComments?: Comment[];
   childrenCount?: number; // 子评论总数
   likes?: number; // 点赞数
 }
 
-// 分页数据类型
-export interface Pagination {
-  current: number;
-  pageSize: number;
-  total: number;
-}
 
 // 分页响应类型
 export interface listRes<T> {
   list: T[];
-  // pagination: Pagination;
   total: number;
 }

@@ -1,26 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { getHotTags } from '../../api';
-import { Tag } from '../../types';
-import styles from './index.module.less';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./index.module.less";
+import useAppStore from "@/store";
 
 const TagsPage: React.FC = () => {
-  const [tags, setTags] = React.useState<Tag[]>([]);
   const [loading, setLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    const fetchTags = async () => {
-      try {
-        const data = await getHotTags();
-        setTags(data);
-      } catch (error) {
-        console.error('获取标签失败:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const { tags } = useAppStore();
 
-    fetchTags();
+  React.useEffect(() => {
+    // 模拟加载延迟
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   }, []);
 
   if (loading) {

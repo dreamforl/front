@@ -4,6 +4,7 @@ import { Article, Comment } from "../../../../types";
 import { formatDate } from "@/utils/date";
 import styles from "./index.module.less";
 import useBaseState from "./hooks";
+import { useNotificationStore } from "@/store/notification";
 import CommentForm from "../comment-form";
 
 interface CommentSectionProps {
@@ -13,6 +14,7 @@ interface CommentSectionProps {
 const CommentSection: React.FC<CommentSectionProps> = (props) => {
   const baseState = useBaseState();
   const { article } = props;
+  const { addNotification } = useNotificationStore();
   const { commentCount } = article;
   const { 
     list, 
@@ -49,6 +51,11 @@ const CommentSection: React.FC<CommentSectionProps> = (props) => {
   // 评论成功后刷新评论列表
   const handleCommentAdded = () => {
     updateComments();
+    addNotification({
+      type: 'comment',
+      title: '评论成功',
+      message: '您的评论已发布，感谢参与讨论！',
+    });
   };
 
   return (

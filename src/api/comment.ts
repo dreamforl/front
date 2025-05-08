@@ -7,9 +7,6 @@ export const getCommentsByArticleId = async (
   page: number = 1,
   pageSize: number = 10
 ) => {
-  // 模拟网络延迟
-  await new Promise((resolve) => setTimeout(resolve, 400));
-
   return zwFetch<listRes<Comment>>("/api/comment", {
     query: { articleId, parentId, page, pageSize },
   });

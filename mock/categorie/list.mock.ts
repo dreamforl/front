@@ -1,0 +1,46 @@
+import { defineMock } from "vite-plugin-mock-dev-server";
+export default defineMock({
+  url: "/api/categorie",
+  body: [
+    {
+      id: 5,
+      createdTime: "2025-05-08T03:35:34.000Z",
+      updatedTime: "2025-05-08T03:35:34.000Z",
+      name: "技术分享",
+      color: "oklch(0.554 0.241 27.162)",
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-icon lucide-code"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+      sort: 0,
+      desc: "分享前端、后端、移动端等技术文章",
+    },
+    {
+      id: 6,
+      createdTime: "2025-05-08T03:46:26.000Z",
+      updatedTime: "2025-05-08T03:46:26.000Z",
+      name: "生活随笔",
+      color: "oklch(0.656 0.241 354.308)",
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>',
+      sort: 0,
+      desc: "记录生活中的点点滴滴",
+    },
+    {
+      id: 7,
+      createdTime: "2025-05-08T03:46:56.000Z",
+      updatedTime: "2025-05-08T03:46:56.000Z",
+      name: "旅行见闻",
+      color: "oklch(0.557 0.241 129.606)",
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plane-icon lucide-plane"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
+      sort: 0,
+      desc: "分享旅行中的美好回忆",
+    },
+    {
+      id: 8,
+      createdTime: "2025-05-08T03:47:34.000Z",
+      updatedTime: "2025-05-08T03:47:34.000Z",
+      name: "美食记录",
+      color: "oklch(0.751 0.241 49.151)",
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee-icon lucide-coffee"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg>',
+      sort: 0,
+      desc: "记录美食探店和烹饪心得",
+    },
+  ],
+});

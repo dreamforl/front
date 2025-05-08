@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../../api";
 import { Article } from "../../types";
+import { authorInfo } from '@/data/author';
 import CommentSection from "./modules/comment-section";
 import ArticleMeta from "./modules/article-meta";
 import Catalogues from "./modules/catalogues";
@@ -197,28 +198,26 @@ const ArticleDetailPage: React.FC = () => {
             <div className={styles.authorCard}>
               <div className={styles.authorHeader}>
                 <img
-                  src={article.author.avatar}
-                  alt={article.author.name}
+                  src={authorInfo.avatar}
+                  alt={authorInfo.name}
                   className={styles.authorAvatar}
                 />
                 <div className={styles.authorInfo}>
-                  <h4 className={styles.authorName}>{article.author.name}</h4>
-                  <p className={styles.authorBio}>
-                    {article.author.tips || "分享知识，创造价值"}
-                  </p>
+                  <h4 className={styles.authorName}>{authorInfo.name}</h4>
+                  <p className={styles.authorBio}>{authorInfo.bio}</p>
                 </div>
               </div>
               <div className={styles.authorStats}>
                 <div className={styles.statItem}>
-                  <span className={styles.statValue}>42</span>
+                  <span className={styles.statValue}>{authorInfo.stats.articles}</span>
                   <span className={styles.statLabel}>文章</span>
                 </div>
                 <div className={styles.statItem}>
-                  <span className={styles.statValue}>1.2k</span>
+                  <span className={styles.statValue}>{authorInfo.stats.followers}</span>
                   <span className={styles.statLabel}>粉丝</span>
                 </div>
                 <div className={styles.statItem}>
-                  <span className={styles.statValue}>84</span>
+                  <span className={styles.statValue}>{authorInfo.stats.likes}</span>
                   <span className={styles.statLabel}>获赞</span>
                 </div>
               </div>

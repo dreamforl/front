@@ -179,12 +179,31 @@
   }
   
   .menuToggle, .searchButton, .loginButton {
-    background: transparent;
+    background: var(--primary-50);
     border: none;
-    padding: var(--spacing-2);
-    color: var(--neutral-700);
+    padding: var(--spacing-3);
+    color: var(--primary-600);
     cursor: pointer;
     margin-left: var(--spacing-3);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast) ease;
+    box-shadow: var(--shadow-sm);
+
+    &:hover, &:active {
+      background: var(--primary-100);
+      color: var(--primary-700);
+      transform: scale(0.95);
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
   }
   
   .userAvatar {
@@ -193,10 +212,11 @@
     margin-left: var(--spacing-3);
     
     img {
-      width: 28px;
-      height: 28px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
+      border: 2px solid var(--primary-100);
     }
   }
 }
@@ -206,7 +226,7 @@
   top: 70px;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: calc(100vh - 70px);
   background: var(--primary-50);
   padding: var(--spacing-5);
   transform: translateX(100%);
@@ -230,18 +250,22 @@
         &.active a {
           color: var(--primary-600);
           font-weight: 600;
+          background: var(--primary-100);
         }
         
         a {
           display: block;
-          padding: var(--spacing-3) 0;
-          font-size: var(--font-size-lg);
+          padding: var(--spacing-4) var(--spacing-5);
+          font-size: var(--font-size-xl);
           color: var(--neutral-800);
           text-decoration: none;
-          transition: color var(--transition-fast) ease;
+          transition: all var(--transition-fast) ease;
+          border-radius: var(--radius-lg);
           
           &:hover {
             color: var(--primary-600);
+            background: var(--primary-100);
+            transform: translateX(var(--spacing-2));
           }
         }
       }

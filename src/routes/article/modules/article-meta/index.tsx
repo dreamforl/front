@@ -3,6 +3,7 @@ import { Clock, Eye, Heart, MessageSquare, Share2 } from 'lucide-react';
 import { Article } from '../../../../types';
 import { formatDate } from '../../../../utils/date';
 import { likeArticle } from '../../../../api';
+import { useNotificationStore } from '@/store/notification';
 import styles from './index.module.less';
 
 interface ArticleMetaProps {
@@ -12,12 +13,21 @@ interface ArticleMetaProps {
 const ArticleMeta: React.FC<ArticleMetaProps> = ({ article }) => {
   const [isLiked, setIsLiked] = useState(article.isLiked === 1);
   const [likeCount, setLikeCount] = useState(article.likes);
+  const { addNotification } = useNotificationStore();
   
   const handleLike = async () => {
     try {
       await likeArticle(article.id);
       setIsLiked(!isLiked);
       setLikeCount(prevCount => isLiked ? prevCount - 1 : prevCount + 1);
+      
+      if (!isLiked) {
+        addNotification({
+          type: 'like',
+          title: '点赞成功',
+          message: `您点赞了文章《${article.title}》`,
+        });
+      }
     } catch (error) {
       console.error('点赞失败:', error);
     }
